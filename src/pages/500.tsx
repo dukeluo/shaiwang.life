@@ -1,6 +1,6 @@
-import Link from 'next/link';
+import Link from 'next/link'
 
-import { PageTitle } from '../components/PageTitle';
+import { PageTitle } from '../components/PageTitle'
 
 export default function ServerError() {
   return (
@@ -11,9 +11,7 @@ export default function ServerError() {
             <div className="text-center">
               <p className="text-base font-semibold text-primary">500</p>
               <PageTitle>Internal Server Error</PageTitle>
-              <p className="mt-2 text-base text-gray-500">
-                Sorry, my server is having some issues.
-              </p>
+              <p className="mt-2 text-base text-gray-500">Sorry, my server is having some issues.</p>
               <div className="mt-6">
                 <Link href="/" className="text-base font-medium hover:text-primary">
                   Go back home
@@ -25,5 +23,5 @@ export default function ServerError() {
         </main>
       </div>
     </>
-  );
+  )
 }

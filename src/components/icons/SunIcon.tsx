@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 
 export function SunIcon(props: React.SVGProps<SVGSVGElement>) {
   return (
@@ -16,5 +16,5 @@ export function SunIcon(props: React.SVGProps<SVGSVGElement>) {
         fill="none"
       />
     </svg>
-  );
+  )
 }

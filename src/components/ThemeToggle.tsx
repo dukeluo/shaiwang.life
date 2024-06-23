@@ -1,16 +1,16 @@
-import { AnimatePresence, motion } from 'framer-motion';
-import { useTheme } from 'next-themes';
-import React, { useEffect, useState } from 'react';
+import { AnimatePresence, motion } from 'framer-motion'
+import { useTheme } from 'next-themes'
+import React, { useEffect, useState } from 'react'
 
-import { MoonIcon } from './icons/MoonIcon';
-import { SunIcon } from './icons/SunIcon';
+import { MoonIcon } from './icons/MoonIcon'
+import { SunIcon } from './icons/SunIcon'
 
 export const ThemeToggle = () => {
-  const { theme, setTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
+  const { theme, setTheme } = useTheme()
+  const [mounted, setMounted] = useState(false)
 
-  useEffect(() => setMounted(true), []);
-  if (!mounted) return null;
+  useEffect(() => setMounted(true), [])
+  if (!mounted) return null
 
   return (
     <AnimatePresence>
@@ -26,5 +26,5 @@ export const ThemeToggle = () => {
         </button>
       </motion.div>
     </AnimatePresence>
-  );
-};
+  )
+}

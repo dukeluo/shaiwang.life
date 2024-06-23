@@ -1,24 +1,24 @@
-import Head from 'next/head';
-import { useRouter } from 'next/router';
-import React from 'react';
+import Head from 'next/head'
+import { useRouter } from 'next/router'
+import React from 'react'
 
-import { formatDate } from '../../lib/date';
-import { Container } from '../Container';
-import { Prose } from '../Prose';
-import { ArrowLeftIcon } from '../icons/ArrowLeftIcon';
+import { formatDate } from '../../lib/date'
+import { Container } from '../Container'
+import { ArrowLeftIcon } from '../icons/ArrowLeftIcon'
+import { Prose } from '../Prose'
 
 interface Props {
-  children: React.ReactNode;
+  children: React.ReactNode
   meta: {
-    title: string;
-    description: string;
-    date: string;
-  };
-  previousPathname?: string;
+    title: string
+    description: string
+    date: string
+  }
+  previousPathname?: string
 }
 
 export const NoteLayout = ({ children, meta, previousPathname }: Props) => {
-  let router = useRouter();
+  const router = useRouter()
 
   return (
     <Container className="mt-16 lg:mt-32">
@@ -52,5 +52,5 @@ export const NoteLayout = ({ children, meta, previousPathname }: Props) => {
         </div>
       </div>
     </Container>
-  );
-};
+  )
+}

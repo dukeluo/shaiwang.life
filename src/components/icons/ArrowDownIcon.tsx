@@ -8,5 +8,5 @@ export function ArrowDownIcon(props: React.SVGProps<SVGSVGElement>) {
         strokeLinejoin="round"
       />
     </svg>
-  );
+  )
 }

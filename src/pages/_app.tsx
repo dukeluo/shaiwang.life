@@ -1,28 +1,29 @@
-import { Analytics } from '@vercel/analytics/react';
-import 'focus-visible';
-import { ThemeProvider } from 'next-themes';
-import { AppProps } from 'next/app';
-import { GeistSans } from 'geist/font/sans';
-import { GeistMono } from 'geist/font/mono';
-import React, { useEffect, useRef } from 'react';
+import 'focus-visible'
+import '../styles/index.css'
+import '../styles/prism.css'
 
-import { Footer } from '../components/Footer';
-import { Header } from '../components/Header';
-import '../styles/index.css';
-import '../styles/prism.css';
+import { Analytics } from '@vercel/analytics/react'
+import { GeistMono } from 'geist/font/mono'
+import { GeistSans } from 'geist/font/sans'
+import { AppProps } from 'next/app'
+import { ThemeProvider } from 'next-themes'
+import React, { useEffect, useRef } from 'react'
+
+import { Footer } from '../components/Footer'
+import { Header } from '../components/Header'
 
 function usePrevious(value: string) {
-  let ref = useRef<string>();
+  const ref = useRef<string>()
 
   useEffect(() => {
-    ref.current = value;
-  }, [value]);
+    ref.current = value
+  }, [value])
 
-  return ref.current;
+  return ref.current
 }
 
 export default function App({ Component, pageProps, router }: AppProps) {
-  let previousPathname = usePrevious(router.pathname);
+  const previousPathname = usePrevious(router.pathname)
 
   return (
     <>
@@ -44,5 +45,5 @@ export default function App({ Component, pageProps, router }: AppProps) {
         </div>
       </ThemeProvider>
     </>
-  );
+  )
 }

@@ -1,12 +1,12 @@
-import { NextSeo } from 'next-seo';
+import { NextSeo } from 'next-seo'
 
-import { PageLayout } from '../components/PageLayout';
-import { Tool } from '../components/tools/Tool';
-import { ToolsSection } from '../components/tools/ToolsSection';
-import { Tools } from '../data/lifeApi';
+import { PageLayout } from '../components/PageLayout'
+import { Tool } from '../components/tools/Tool'
+import { ToolsSection } from '../components/tools/ToolsSection'
+import { Tools } from '../data/lifeApi'
 
-const seoTitle = 'Uses';
-const seoDescription = 'Software I use, gadgets I love, and other things I recommend.';
+const seoTitle = 'Uses'
+const seoDescription = 'Software I use, gadgets I love, and other things I recommend.'
 
 export default function Uses() {
   return (
@@ -40,5 +40,5 @@ export default function Uses() {
         </div>
       </PageLayout>
     </>
-  );
+  )
 }

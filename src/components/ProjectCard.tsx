@@ -1,12 +1,12 @@
-import Image from 'next/image';
+import Image from 'next/image'
 
-import { Project } from '../data/lifeApi';
-import { Badge } from './Badge';
-import { Card } from './Card';
-import { LinkIcon } from './icons/LinkIcon';
+import { Project } from '../data/lifeApi'
+import { Badge } from './Badge'
+import { Card } from './Card'
+import { LinkIcon } from './icons/LinkIcon'
 
 interface Props {
-  project: Project;
+  project: Project
 }
 
 export const ProjectCard = ({ project }: Props) => {
@@ -47,5 +47,5 @@ export const ProjectCard = ({ project }: Props) => {
         )}
       </div>
     </Card>
-  );
-};
+  )
+}

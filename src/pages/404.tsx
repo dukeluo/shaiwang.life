@@ -1,6 +1,6 @@
-import Link from 'next/link';
+import Link from 'next/link'
 
-import { PageTitle } from '../components/PageTitle';
+import { PageTitle } from '../components/PageTitle'
 
 export default function NotFound() {
   return (
@@ -25,5 +25,5 @@ export default function NotFound() {
         </main>
       </div>
     </>
-  );
+  )
 }

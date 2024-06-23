@@ -1,12 +1,12 @@
-import clsx from 'clsx';
-import Link from 'next/link';
-import React from 'react';
+import clsx from 'clsx'
+import Link from 'next/link'
+import React from 'react'
 
 export interface Props {
-  className?: string;
-  href: string;
-  icon: React.ElementType;
-  children?: React.ReactNode;
+  className?: string
+  href: string
+  icon: React.ElementType
+  children?: React.ReactNode
 }
 
 export const SocialLink = ({ className, href, children, icon: Icon }: Props) => {
@@ -20,5 +20,5 @@ export const SocialLink = ({ className, href, children, icon: Icon }: Props) => 
         {children && <span className="ml-4">{children}</span>}
       </Link>
     </li>
-  );
-};
+  )
+}

@@ -1,17 +1,15 @@
-import clsx from 'clsx';
-import React from 'react';
+import clsx from 'clsx'
+import React from 'react'
 
 type Props = {
-  className?: string;
-  quote: string;
-  author?: string;
-};
+  className?: string
+  quote: string
+  author?: string
+}
 
 export const Quote = ({ className, quote, author }: Props) => {
   return (
-    <blockquote
-      className={clsx(className, 'rounded-md bg-zinc-100 p-4 dark:bg-zinc-800 border-l-0 ')}
-    >
+    <blockquote className={clsx(className, 'rounded-md bg-zinc-100 p-4 dark:bg-zinc-800 border-l-0 ')}>
       <div className="relative text-lg font-medium md:flex-grow overflow-visible">
         <svg
           className="absolute top-0 left-0 h-8 w-8 -ml-8 -mt-8 text-zinc-300 z-10"
@@ -34,5 +32,5 @@ export const Quote = ({ className, quote, author }: Props) => {
         </footer>
       )}
     </blockquote>
-  );
-};
+  )
+}

@@ -1,20 +1,18 @@
 /* eslint-disable @next/next/no-img-element */
-import { ImageResponse } from '@vercel/og';
-import { NextRequest } from 'next/server';
+import { ImageResponse } from '@vercel/og'
+import { NextRequest } from 'next/server'
 
 export const config = {
   runtime: 'experimental-edge',
-};
+}
 
-const font = fetch(new URL('../../../public/assets/font/Inter.ttf', import.meta.url)).then((res) =>
-  res.arrayBuffer(),
-);
+const font = fetch(new URL('../../../public/assets/font/Inter.ttf', import.meta.url)).then((res) => res.arrayBuffer())
 
 const generateImage = async (req: NextRequest) => {
-  const fontData = await font;
-  const { searchParams } = req.nextUrl;
-  const title = searchParams.get('title');
-  const description = searchParams.get('description');
+  const fontData = await font
+  const { searchParams } = req.nextUrl
+  const title = searchParams.get('title')
+  const description = searchParams.get('description')
 
   return new ImageResponse(
     (
@@ -45,8 +43,8 @@ const generateImage = async (req: NextRequest) => {
           style: 'normal',
         },
       ],
-    },
-  );
-};
+    }
+  )
+}
 
-export default generateImage;
+export default generateImage

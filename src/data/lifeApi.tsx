@@ -1,42 +1,42 @@
-import { ExternalLink } from '../components/ExternalLink';
-import { GitHubIcon } from '../components/icons/GitHubIcon';
-import { InstagramIcon } from '../components/icons/InstagramIcon';
-import { XIcon } from '../components/icons/XIcon';
-import { LinkedInIcon } from '../components/icons/LinkedInIcon';
+import { ExternalLink } from '../components/ExternalLink'
+import { GitHubIcon } from '../components/icons/GitHubIcon'
+import { InstagramIcon } from '../components/icons/InstagramIcon'
+import { LinkedInIcon } from '../components/icons/LinkedInIcon'
+import { XIcon } from '../components/icons/XIcon'
 
-export const Name = 'Bartosz Jarocki';
+export const Name = 'Bartosz Jarocki'
 
 export const About = (
   <>
     {`I used to consider myself a software engineer, but the reality is that I simply enjoy creating things. If you'd like to get in touch,`}{' '}
     <ExternalLink href="mailto:bartosz@jarocki.me">send me an email.</ExternalLink>
   </>
-);
-export const AboutExtended = `I live in Wrocław, Poland, having grown up in the small town of Góra in the western part of the country. I have a bachelor's degree in Control Systems Engineering and Robotics from the Wrocław University of Technology. I like programming, books, plants, mountain biking, whisky, and traveling the world with my wife, Kasia. The cosmos fascinates me, and I take great delight in gazing at the stars.`;
+)
+export const AboutExtended = `I live in Wrocław, Poland, having grown up in the small town of Góra in the western part of the country. I have a bachelor's degree in Control Systems Engineering and Robotics from the Wrocław University of Technology. I like programming, books, plants, mountain biking, whisky, and traveling the world with my wife, Kasia. The cosmos fascinates me, and I take great delight in gazing at the stars.`
 
 export type Project = {
-  title: string;
-  techStack: string[];
-  description: string;
-  logo: any;
+  title: string
+  techStack: string[]
+  description: string
+  logo: any
   link?: {
-    label: string;
-    href: string;
-  };
-};
+    label: string
+    href: string
+  }
+}
 
-export const MyCurrentProjects: Project[] = [];
+export const MyCurrentProjects: Project[] = []
 
-export const MyPastProjects: Project[] = [];
+export const MyPastProjects: Project[] = []
 
 export const SocialMedia = [
   { name: 'Twitter', link: 'https://twitter.com/BartoszJarocki', icon: XIcon },
   { name: 'Instagram', link: 'https://www.instagram.com/bartosz.jarocki/', icon: InstagramIcon },
   { name: 'Github', link: 'https://github.com/BartoszJarocki', icon: GitHubIcon },
   { name: 'LinkedIn', link: 'https://www.linkedin.com/in/bjarocki', icon: LinkedInIcon },
-] as const;
+] as const
 
-export const Work = [];
+export const Work = []
 
 export const CompaniesLinks = [
   {
@@ -59,7 +59,7 @@ export const CompaniesLinks = [
     name: 'Canal Digital',
     link: 'https://www.canaldigital.no/',
   },
-] as const;
+] as const
 
 export const Books = [
   {
@@ -90,7 +90,7 @@ export const Books = [
     name: 'Atomic Habits by James Clear',
     link: 'https://amzn.to/3iqimpZ',
   },
-] as const;
+] as const
 
 export const VideosWorthWatching = [
   {
@@ -101,7 +101,7 @@ export const VideosWorthWatching = [
     name: 'Falcon Heavy & Starman',
     link: 'https://www.youtube.com/watch?v=A0FZIwabctw',
   },
-] as const;
+] as const
 
 export const Podcasts = [
   {
@@ -124,7 +124,7 @@ export const Podcasts = [
     name: 'Build your SaaS',
     link: 'https://saas.transistor.fm/',
   },
-] as const;
+] as const
 
 export const PeopleWorthFollowingOnTwitter = [
   {
@@ -171,7 +171,7 @@ export const PeopleWorthFollowingOnTwitter = [
     name: 'Pieter Levels',
     link: 'https://twitter.com/levelsio',
   },
-] as const;
+] as const
 
 export const Blogs = [
   {
@@ -202,7 +202,7 @@ export const Blogs = [
     name: 'Naval Ravikant',
     link: 'https://nav.al/',
   },
-] as const;
+] as const
 
 export const Quotes = [
   {
@@ -214,8 +214,7 @@ export const Quotes = [
     author: '― Confucius',
   },
   {
-    content:
-      'The man who asks a question is a fool for a minute, the man who does not ask is a fool for life.',
+    content: 'The man who asks a question is a fool for a minute, the man who does not ask is a fool for life.',
     author: '― Confucius',
   },
   {
@@ -255,8 +254,7 @@ export const Quotes = [
     author: '― Marcus Aurelius',
   },
   {
-    content:
-      'You have power over your mind - not outside events. Realize this, and you will find strength.',
+    content: 'You have power over your mind - not outside events. Realize this, and you will find strength.',
     author: '― Marcus Aurelius',
   },
   {
@@ -276,7 +274,7 @@ export const Quotes = [
     content: 'We suffer more often in imagination than in reality',
     author: '― Seneca',
   },
-] as const;
+] as const
 
 export const Tools = {
   Workstation: [
@@ -305,8 +303,7 @@ export const Tools = {
     },
     {
       title: 'Apple Magic Trackpad',
-      description:
-        'Gestures, taps and swipes are something I miss when I work with my laptop closed.',
+      description: 'Gestures, taps and swipes are something I miss when I work with my laptop closed.',
       href: 'https://amzn.to/3pgETza',
     },
     {
@@ -363,4 +360,4 @@ export const Tools = {
       href: 'https://cron.com/',
     },
   ],
-} as const;
+} as const

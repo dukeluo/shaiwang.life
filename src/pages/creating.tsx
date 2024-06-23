@@ -1,13 +1,13 @@
-import { motion } from 'framer-motion';
-import { NextSeo } from 'next-seo';
+import { motion } from 'framer-motion'
+import { NextSeo } from 'next-seo'
 
-import { PageLayout } from '../components/PageLayout';
-import { ProjectCard } from '../components/ProjectCard';
-import { MyCurrentProjects, MyPastProjects } from '../data/lifeApi';
-import { ANIMATION_FROM_PROPS, ANIMATION_TO_PROPS } from '../lib/animation';
+import { PageLayout } from '../components/PageLayout'
+import { ProjectCard } from '../components/ProjectCard'
+import { MyCurrentProjects, MyPastProjects } from '../data/lifeApi'
+import { ANIMATION_FROM_PROPS, ANIMATION_TO_PROPS } from '../lib/animation'
 
-const seoTitle = 'Creating';
-const seoDescription = "Things I've made trying to put my dent in the universe.";
+const seoTitle = 'Creating'
+const seoDescription = "Things I've made trying to put my dent in the universe."
 
 export default function Creating() {
   return (
@@ -30,10 +30,7 @@ export default function Creating() {
       >
         <h2 className="text-2xl font-bold tracking-tight">Now</h2>
         <p className="mt-2 text-base">Projects I currently work on.</p>
-        <ul
-          role="list"
-          className="mt-12 grid grid-cols-1 gap-x-12 gap-y-16 sm:grid-cols-2 lg:grid-cols-3"
-        >
+        <ul role="list" className="mt-12 grid grid-cols-1 gap-x-12 gap-y-16 sm:grid-cols-2 lg:grid-cols-3">
           {MyCurrentProjects.map((project) => (
             <motion.li
               key={project.title}
@@ -48,13 +45,9 @@ export default function Creating() {
 
         <h2 className="mt-24 text-2xl font-bold tracking-tight">Past</h2>
         <p className="mt-2 text-base">
-          Projects I worked on. Due to nature of internet businesses not all of them are still
-          online.
+          Projects I worked on. Due to nature of internet businesses not all of them are still online.
         </p>
-        <ul
-          role="list"
-          className="mt-12 grid grid-cols-1 gap-x-12 gap-y-16 sm:grid-cols-2 lg:grid-cols-3"
-        >
+        <ul role="list" className="mt-12 grid grid-cols-1 gap-x-12 gap-y-16 sm:grid-cols-2 lg:grid-cols-3">
           {MyPastProjects.map((project) => (
             <motion.li
               key={project.title}
@@ -68,5 +61,5 @@ export default function Creating() {
         </ul>
       </PageLayout>
     </>
-  );
+  )
 }

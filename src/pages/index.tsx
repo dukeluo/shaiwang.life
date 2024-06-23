@@ -1,22 +1,21 @@
-import { compareDesc } from 'date-fns';
-import { GetStaticProps } from 'next';
-import { NextSeo } from 'next-seo';
+import { compareDesc } from 'date-fns'
+import { GetStaticProps } from 'next'
+import { NextSeo } from 'next-seo'
 
-import { Container } from '../components/Container';
-import { PageTitle } from '../components/PageTitle';
-import { Resume } from '../components/Resume';
-import { SocialLink } from '../components/SocialLink';
-import { NotePreview } from '../components/notes/NotePreview';
-import { About, Name, SocialMedia } from '../data/lifeApi';
-import { Note, notesApi } from '../lib/notesApi';
+import { Container } from '../components/Container'
+import { NotePreview } from '../components/notes/NotePreview'
+import { PageTitle } from '../components/PageTitle'
+import { Resume } from '../components/Resume'
+import { SocialLink } from '../components/SocialLink'
+import { About, Name, SocialMedia } from '../data/lifeApi'
+import { Note, notesApi } from '../lib/notesApi'
 
-const seoTitle = 'Bartosz Jarocki';
-const seoDescription =
-  'A passionate software engineer with an eye for details based in Wrocław, Poland.';
+const seoTitle = 'Bartosz Jarocki'
+const seoDescription = 'A passionate software engineer with an eye for details based in Wrocław, Poland.'
 
 type Props = {
-  latestNotes: Note[];
-};
+  latestNotes: Note[]
+}
 
 export default function Home({ latestNotes }: Props) {
   return (
@@ -62,16 +61,16 @@ export default function Home({ latestNotes }: Props) {
         </div>
       </Container>
     </>
-  );
+  )
 }
 
-const NEWEST_POSTS_TO_DISPLAY = 5;
+const NEWEST_POSTS_TO_DISPLAY = 5
 
 export const getStaticProps: GetStaticProps<Props> = async () => {
-  const latestNotes = await notesApi.getNotes('desc', NEWEST_POSTS_TO_DISPLAY);
+  const latestNotes = await notesApi.getNotes('desc', NEWEST_POSTS_TO_DISPLAY)
 
   return {
     props: { latestNotes },
     revalidate: 10,
-  };
-};
+  }
+}

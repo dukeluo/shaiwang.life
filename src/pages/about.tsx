@@ -1,14 +1,14 @@
-import { EnvelopeIcon } from '@heroicons/react/24/outline';
-import { NextSeo } from 'next-seo';
-import Image from 'next/image';
-import React, { useEffect, useMemo, useState } from 'react';
+import { EnvelopeIcon } from '@heroicons/react/24/outline'
+import Image from 'next/image'
+import { NextSeo } from 'next-seo'
+import React, { useEffect, useMemo, useState } from 'react'
 
-import { Container } from '../components/Container';
-import { ExternalLink } from '../components/ExternalLink';
-import { PageTitle } from '../components/PageTitle';
-import { Quote } from '../components/Quote';
-import { Section } from '../components/Section';
-import { SocialLink } from '../components/SocialLink';
+import { Container } from '../components/Container'
+import { ExternalLink } from '../components/ExternalLink'
+import { PageTitle } from '../components/PageTitle'
+import { Quote } from '../components/Quote'
+import { Section } from '../components/Section'
+import { SocialLink } from '../components/SocialLink'
 import {
   AboutExtended,
   Blogs,
@@ -18,13 +18,13 @@ import {
   Quotes,
   SocialMedia,
   VideosWorthWatching,
-} from '../data/lifeApi';
+} from '../data/lifeApi'
 
-const seoTitle = `About`;
-const seoDescription = `A few words about me.`;
+const seoTitle = `About`
+const seoDescription = `A few words about me.`
 
 export default function AboutMe() {
-  const randomQuote = useMemo(() => Quotes[Math.floor(Math.random() * Quotes.length)], []);
+  const randomQuote = useMemo(() => Quotes[Math.floor(Math.random() * Quotes.length)], [])
 
   return (
     <>
@@ -69,44 +69,33 @@ export default function AboutMe() {
             <Section>
               <Section.Title as="h2">Work</Section.Title>
               <Section.Content>
-                I&apos;m a software developer with over 13 years of experience. I started as a C/C++
-                developer, then transitioned to Android world and now I&apos;m mostly focused on
-                developing great user experiences using React.
+                I&apos;m a software developer with over 13 years of experience. I started as a C/C++ developer, then
+                transitioned to Android world and now I&apos;m mostly focused on developing great user experiences using
+                React.
                 <br />
-                <br />I created multiple Android applications from scratch for companies around the
-                world like{' '}
+                <br />I created multiple Android applications from scratch for companies around the world like{' '}
                 <ExternalLink href={'https://www.visionmedia.com/'}>VisionMedia</ExternalLink>,{' '}
                 <ExternalLink href={'https://www.dkms.org/en'}>DKMS</ExternalLink>,{' '}
                 <ExternalLink href={'https://www.aaa.com/'}>AAA</ExternalLink>,{' '}
                 <ExternalLink href={'https://polskapress.pl/pl'}>PolskaPress</ExternalLink> or{' '}
-                <ExternalLink href={'https://www.canaldigital.no/'}>Canal Digital</ExternalLink>. I
-                helped to create/review/design mobile applications for startups like{' '}
-                <ExternalLink href={'https://play.google.com/store/apps/details?id=io.bimapp'}>
-                  Bim
-                </ExternalLink>
-                , <ExternalLink href={'https://www.tastycloud.fr'}>Tastycloud</ExternalLink>,{' '}
-                <ExternalLink
-                  href={'https://play.google.com/store/apps/details?id=com.howdyhub.howdy'}
-                >
+                <ExternalLink href={'https://www.canaldigital.no/'}>Canal Digital</ExternalLink>. I helped to
+                create/review/design mobile applications for startups like{' '}
+                <ExternalLink href={'https://play.google.com/store/apps/details?id=io.bimapp'}>Bim</ExternalLink>,{' '}
+                <ExternalLink href={'https://www.tastycloud.fr'}>Tastycloud</ExternalLink>,{' '}
+                <ExternalLink href={'https://play.google.com/store/apps/details?id=com.howdyhub.howdy'}>
                   Howdy
                 </ExternalLink>{' '}
                 and{' '}
-                <ExternalLink
-                  href={
-                    'https://play.google.com/store/apps/details?id=com.vikingco.vikingapp.poland'
-                  }
-                >
+                <ExternalLink href={'https://play.google.com/store/apps/details?id=com.vikingco.vikingapp.poland'}>
                   Mobile Vikings
                 </ExternalLink>
-                . I developed a WebRTC powered video conferencing frontend application using
-                React.js/GraphQL/Typescript for{' '}
-                <ExternalLink href={'https://www.evercast.us'}>Evercast</ExternalLink>. I also had
-                led development teams many times. If you&apos;d like to work with me{' '}
+                . I developed a WebRTC powered video conferencing frontend application using React.js/GraphQL/Typescript
+                for <ExternalLink href={'https://www.evercast.us'}>Evercast</ExternalLink>. I also had led development
+                teams many times. If you&apos;d like to work with me{' '}
                 <ExternalLink href="https://twitter.com/messages/compose?recipient_id=512460212">
                   DM me on Twitter
                 </ExternalLink>{' '}
-                or just{' '}
-                <ExternalLink href="mailto:bartosz.jarocki@icloud.com">email me.</ExternalLink>
+                or just <ExternalLink href="mailto:bartosz.jarocki@icloud.com">email me.</ExternalLink>
               </Section.Content>
             </Section>
             <Section>
@@ -180,5 +169,5 @@ export default function AboutMe() {
         </div>
       </Container>
     </>
-  );
+  )
 }

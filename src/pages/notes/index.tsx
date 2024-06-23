@@ -1,18 +1,17 @@
-import { GetStaticProps } from 'next';
-import { NextSeo } from 'next-seo';
+import { GetStaticProps } from 'next'
+import { NextSeo } from 'next-seo'
 
-import { Badge } from '../../components/Badge';
-import { PageLayout } from '../../components/PageLayout';
-import { NotePreview } from '../../components/notes/NotePreview';
-import { Note, notesApi } from '../../lib/notesApi';
+import { Badge } from '../../components/Badge'
+import { NotePreview } from '../../components/notes/NotePreview'
+import { PageLayout } from '../../components/PageLayout'
+import { Note, notesApi } from '../../lib/notesApi'
 
-const seoTitle = 'Notes';
-const seoDescription =
-  'All of my thoughts on programming, building products, leadership, and more. Not structured.';
+const seoTitle = 'Notes'
+const seoDescription = 'All of my thoughts on programming, building products, leadership, and more. Not structured.'
 
 interface Props {
-  notes: Note[];
-  tags: Array<string>;
+  notes: Note[]
+  tags: Array<string>
 }
 
 export default function Notes({ notes, tags }: Props) {
@@ -48,11 +47,11 @@ export default function Notes({ notes, tags }: Props) {
         </div>
       </PageLayout>
     </>
-  );
+  )
 }
 
 export const getStaticProps: GetStaticProps<Props> = async () => {
-  const notes = await notesApi.getNotes('desc');
+  const notes = await notesApi.getNotes('desc')
 
   return {
     props: {
@@ -60,5 +59,5 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
       tags: Array.from(new Set(notes.map((post) => post.tags).flat())),
     },
     revalidate: 10,
-  };
-};
+  }
+}

@@ -1,22 +1,22 @@
-import { motion, useMotionTemplate, useMotionValue } from 'framer-motion';
-import { MouseEvent } from 'react';
+import { motion, useMotionTemplate, useMotionValue } from 'framer-motion'
+import { MouseEvent } from 'react'
 
 interface Props {
-  children: React.ReactNode;
+  children: React.ReactNode
 }
 
 export const Glow = ({ children }: Props) => {
-  let mouseX = useMotionValue(0);
-  let mouseY = useMotionValue(0);
+  const mouseX = useMotionValue(0)
+  const mouseY = useMotionValue(0)
 
   function handleMouseMove({ clientX, clientY, currentTarget }: MouseEvent) {
-    let { left, top } = currentTarget.getBoundingClientRect();
+    const { left, top } = currentTarget.getBoundingClientRect()
 
-    mouseX.set(clientX - left);
-    mouseY.set(clientY - top);
+    mouseX.set(clientX - left)
+    mouseY.set(clientY - top)
   }
 
-  const background = useMotionTemplate`radial-gradient(100px circle at ${mouseX}px ${mouseY}px, rgb(14 165 233 / 0.15), transparent 80%)`;
+  const background = useMotionTemplate`radial-gradient(100px circle at ${mouseX}px ${mouseY}px, rgb(14 165 233 / 0.15), transparent 80%)`
 
   return (
     <div onMouseMove={handleMouseMove} className="relative group overflow-visible">
@@ -29,5 +29,5 @@ export const Glow = ({ children }: Props) => {
 
       {children}
     </div>
-  );
-};
+  )
+}

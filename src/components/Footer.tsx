@@ -1,7 +1,7 @@
-import React from 'react';
+import React from 'react'
 
-import { Container } from './Container';
-import { NavLink, NavigationItems } from './Navigation';
+import { Container } from './Container'
+import { NavigationItems, NavLink } from './Navigation'
 
 export const Footer = () => {
   return (
@@ -25,5 +25,5 @@ export const Footer = () => {
         </div>
       </Container.Outer>
     </footer>
-  );
-};
+  )
+}

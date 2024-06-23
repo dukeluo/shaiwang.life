@@ -18,5 +18,5 @@ export function BriefcaseIcon(props: React.SVGProps<SVGSVGElement>) {
         className="stroke-zinc-400 dark:stroke-zinc-500"
       />
     </svg>
-  );
+  )
 }
