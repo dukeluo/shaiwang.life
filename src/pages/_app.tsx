@@ -3,7 +3,6 @@ import '../styles/index.css'
 import '../styles/prism.css'
 
 import { Analytics } from '@vercel/analytics/react'
-import { GeistMono } from 'geist/font/mono'
 import { GeistSans } from 'geist/font/sans'
 import { AppProps } from 'next/app'
 import { ThemeProvider } from 'next-themes'
