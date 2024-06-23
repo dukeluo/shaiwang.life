@@ -1,5 +1,5 @@
 module.exports = {
-  siteUrl: process.env.SITE_URL || 'https://jarocki.me',
+  siteUrl: process.env.SITE_URL,
   generateRobotsTxt: true,
   autoLastmod: false,
   generateIndexSitemap: false,
@@ -13,4 +13,4 @@ module.exports = {
       },
     ],
   },
-};
+}

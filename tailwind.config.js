@@ -1,4 +1,4 @@
-const { spacing, fontFamily } = require('tailwindcss/defaultTheme');
+const { spacing, fontFamily } = require('tailwindcss/defaultTheme')
 
 module.exports = {
   purge: ['./src/**/*.{tsx,jsx,ts,js}'],
@@ -99,4 +99,4 @@ module.exports = {
       }),
     },
   },
-};
+}

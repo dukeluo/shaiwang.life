@@ -4,7 +4,7 @@ const config = {
   experimental: {
     scrollRestoration: true,
   },
-  transpilePackages: ["geist"],
+  transpilePackages: ['geist'],
   images: {
     remotePatterns: [
       {
@@ -24,8 +24,8 @@ const config = {
         destination: '/notes/:slug*',
         permanent: true,
       },
-    ];
+    ]
   },
-};
+}
 
-export default config;
+export default config
