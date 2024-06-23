@@ -14,6 +14,11 @@ export const NavigationItems = [
     type: 'internal',
   },
   {
+    name: 'Blog',
+    href: '/blog',
+    type: 'internal',
+  },
+  {
     name: 'Notes',
     href: '/notes',
     type: 'internal',
@@ -26,16 +31,6 @@ export const NavigationItems = [
   {
     name: 'Uses',
     href: '/uses',
-    type: 'internal',
-  },
-  {
-    name: 'Resume',
-    href: 'https://cv.jarocki.me',
-    type: 'external',
-  },
-  {
-    name: 'About',
-    href: '/about',
     type: 'internal',
   },
 ] as const
