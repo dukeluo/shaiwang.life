@@ -4,13 +4,13 @@ import { NextSeo } from 'next-seo'
 import { Badge } from '../../components/Badge'
 import { NotePreview } from '../../components/notes/NotePreview'
 import { PageLayout } from '../../components/PageLayout'
-import { Note, notesApi } from '../../lib/notesApi'
+import { notesApi, NotionPage } from '../../lib/notesApi'
 
 const seoTitle = 'Notes'
 const seoDescription = 'All of my thoughts on programming, building products, leadership, and more. Not structured.'
 
 interface Props {
-  notes: Note[]
+  notes: NotionPage[]
   tags: Array<string>
 }
 

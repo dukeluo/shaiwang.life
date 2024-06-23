@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { Client, isFullPage } from '@notionhq/client'
 import { BlockObjectResponse, PageObjectResponse } from '@notionhq/client/build/src/api-endpoints'
 import { compareAsc, compareDesc } from 'date-fns'
@@ -8,15 +7,28 @@ const notionClient = new Client({
   auth: process.env.NOTION_TOKEN,
 })
 
-export type Note = {
+enum NotionPageStatus {
+  Private = 'Private',
+  Public = 'Public',
+}
+
+enum NotionPageType {
+  Blog = 'Blog',
+  Note = 'Note',
+}
+
+export interface NotionPage {
   id: string
   createdAt: string
   lastEditedAt: string
-  coverImage: string | null
-  tags: string[]
   title: string
-  description: string
   slug: string
+  status: NotionPageStatus
+  type: NotionPageType
+  category: string
+  tags: string[]
+  description: string
+  cover?: string | null
   isPublished: boolean
   publishedAt: string
   inProgress: boolean
@@ -119,7 +131,7 @@ class NotesApi {
     return Array.from(new Set(posts.map((note) => note.tags).flat()))
   }
 
-  private getDatabaseContent = async (databaseId: string): Promise<Note[]> => {
+  private getDatabaseContent = async (databaseId: string): Promise<NotionPage[]> => {
     const db = await this.notion.databases.query({ database_id: databaseId })
 
     while (db.has_more && db.next_cursor) {
@@ -142,7 +154,7 @@ class NotesApi {
           id: page.id,
           createdAt: page.created_time,
           lastEditedAt: page.last_edited_time,
-          coverImage: page.cover?.type === 'external' ? page.cover.external.url : null,
+          cover: page.cover?.type === 'external' ? page.cover.external.url : null,
           tags:
             'multi_select' in page.properties.hashtags
               ? page.properties.hashtags.multi_select.map((tag) => tag.name)
@@ -153,6 +165,9 @@ class NotesApi {
           isPublished: true,
           publishedAt: '',
           inProgress: false,
+          status: NotionPageStatus.Public,
+          type: NotionPageType.Blog,
+          category: '',
         }
       })
       .filter((post) => post.isPublished)

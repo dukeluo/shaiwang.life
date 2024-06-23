@@ -4,14 +4,14 @@ import React from 'react'
 
 import { NotePreview } from '../../components/notes/NotePreview'
 import { PageLayout } from '../../components/PageLayout'
-import { Note, notesApi } from '../../lib/notesApi'
+import { notesApi, NotionPage } from '../../lib/notesApi'
 
 const seoTitle = 'Tags'
 const seoDescription = 'All of my blog posts tagged with '
 
 interface Props {
   tag: string
-  relatedNotes: Note[]
+  relatedNotes: NotionPage[]
 }
 
 export default function Tag({ tag, relatedNotes }: Props) {
