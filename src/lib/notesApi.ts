@@ -1,38 +1,13 @@
 import { Client, isFullPage } from '@notionhq/client'
-import { BlockObjectResponse, PageObjectResponse } from '@notionhq/client/build/src/api-endpoints'
+import { BlockObjectResponse } from '@notionhq/client/build/src/api-endpoints'
 import { compareAsc, compareDesc } from 'date-fns'
 import { getPlaiceholder } from 'plaiceholder'
+
+import { NotionPage, NotionPageStatus, NotionPageType } from './types'
 
 const notionClient = new Client({
   auth: process.env.NOTION_TOKEN,
 })
-
-enum NotionPageStatus {
-  Private = 'Private',
-  Public = 'Public',
-}
-
-enum NotionPageType {
-  Blog = 'Blog',
-  Note = 'Note',
-}
-
-export interface NotionPage {
-  id: string
-  createdAt: string
-  lastEditedAt: string
-  title: string
-  slug: string
-  status: NotionPageStatus
-  type: NotionPageType
-  category: string
-  tags: string[]
-  description: string
-  cover?: string | null
-  isPublished: boolean
-  publishedAt: string
-  inProgress: boolean
-}
 
 const noop = async (block: BlockObjectResponse) => block
 
@@ -154,20 +129,17 @@ class NotesApi {
           id: page.id,
           createdAt: page.created_time,
           lastEditedAt: page.last_edited_time,
-          cover: page.cover?.type === 'external' ? page.cover.external.url : null,
-          tags:
-            'multi_select' in page.properties.hashtags
-              ? page.properties.hashtags.multi_select.map((tag) => tag.name)
-              : [],
           title: 'title' in page.properties.title ? page.properties.title.title[0].plain_text : '',
-          description: '',
           slug: 'rich_text' in page.properties.slug ? page.properties.slug.rich_text[0].plain_text : '',
-          isPublished: true,
-          publishedAt: '',
-          inProgress: false,
           status: NotionPageStatus.Public,
           type: NotionPageType.Blog,
           category: '',
+          tags: 'multi_select' in page.properties.tags ? page.properties.tags.multi_select.map((tag) => tag.name) : [],
+          description: 'rich_text' in page.properties.slug ? page.properties.slug.rich_text[0].plain_text : '',
+          cover: page.cover?.type === 'external' ? page.cover.external.url : null,
+          isPublished: true,
+          publishedAt: '',
+          inProgress: false,
         }
       })
       .filter((post) => post.isPublished)

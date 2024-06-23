@@ -4,7 +4,8 @@ import React from 'react'
 
 import { NotePreview } from '../../components/notes/NotePreview'
 import { PageLayout } from '../../components/PageLayout'
-import { notesApi, NotionPage } from '../../lib/notesApi'
+import { notesApi } from '../../lib/notesApi'
+import { NotionPage } from '../../lib/types'
 
 const seoTitle = 'Tags'
 const seoDescription = 'All of my blog posts tagged with '

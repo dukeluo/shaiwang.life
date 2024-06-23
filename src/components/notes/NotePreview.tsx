@@ -4,7 +4,7 @@ import React from 'react'
 
 import { ANIMATION_FROM_PROPS, ANIMATION_TO_PROPS } from '../../lib/animation'
 import { formatDate } from '../../lib/date'
-import { NotionPage } from '../../lib/notesApi'
+import { NotionPage } from '../../lib/types'
 import { Card } from '../Card'
 
 const StaticBadge = ({ className, children }: React.PropsWithChildren<{ className?: string }>) => (

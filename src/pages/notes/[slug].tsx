@@ -6,7 +6,8 @@ import { useEffect } from 'react'
 import { XIcon } from '../../components/icons/XIcon'
 import { NoteLayout } from '../../components/notes/NoteLayout'
 import { NotionBlockRenderer } from '../../components/notion/NotionBlockRenderer'
-import { notesApi, NotionPage as NoteType } from '../../lib/notesApi'
+import { notesApi } from '../../lib/notesApi'
+import { NotionPage as NoteType } from '../../lib/types'
 
 type Props = {
   note: NoteType
