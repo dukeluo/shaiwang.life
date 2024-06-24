@@ -4,7 +4,6 @@ const config = {
   experimental: {
     scrollRestoration: true,
   },
-  transpilePackages: ['geist'],
   images: {
     remotePatterns: [
       {

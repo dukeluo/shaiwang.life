@@ -1,3 +1,5 @@
+@import 'lxgw-wenkai-lite-webfont/style.css';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -14,4 +16,12 @@
 
 .text-balance {
   text-wrap: balance;
+}
+
+body {
+  font-family: "LXGW WenKai Lite", sans-serif;
+}
+
+pre, code {
+  font-family: "LXGW WenKai Mono Lite", sans-serif;
 }

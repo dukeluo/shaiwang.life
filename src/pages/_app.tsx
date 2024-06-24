@@ -3,7 +3,6 @@ import '../styles/index.css'
 import '../styles/prism.css'
 
 import { Analytics } from '@vercel/analytics/react'
-import { GeistSans } from 'geist/font/sans'
 import { AppProps } from 'next/app'
 import { ThemeProvider } from 'next-themes'
 import React, { useEffect, useRef } from 'react'
@@ -27,21 +26,19 @@ export default function App({ Component, pageProps, router }: AppProps) {
   return (
     <>
       <ThemeProvider attribute="class">
-        <div className={`${GeistSans.className}`}>
-          <div className="fixed inset-0 flex justify-center sm:px-8">
-            <div className="flex w-full max-w-7xl lg:px-8">
-              <div className="w-full bg-white ring-1 ring-zinc-100 dark:bg-zinc-900 dark:ring-zinc-300/20" />
-            </div>
+        <div className="fixed inset-0 flex justify-center sm:px-8">
+          <div className="flex w-full max-w-7xl lg:px-8">
+            <div className="w-full bg-white ring-1 ring-zinc-100 dark:bg-zinc-900 dark:ring-zinc-300/20" />
           </div>
-          <div className="relative">
-            <Header />
-            <main>
-              <Component previousPathname={previousPathname} {...pageProps} />
-            </main>
-            <Footer />
-          </div>
-          <Analytics />
         </div>
+        <div className="relative">
+          <Header />
+          <main>
+            <Component previousPathname={previousPathname} {...pageProps} />
+          </main>
+          <Footer />
+        </div>
+        <Analytics />
       </ThemeProvider>
     </>
   )
