@@ -53,11 +53,11 @@ export default function Note({
           <hr />
 
           <a
-            className="group block text-xl font-semibold md:text-3xl no-underline"
+            className="group block text-xl font-semibold no-underline md:text-3xl"
             href={`http://x.com/share?text=${title}&url=${url}`}
           >
-            <h4 className="max-w-lg flex cursor-pointer flex-col duration-200 ease-in-out group-hover:text-primary group-hover:fill-primary fill-white text-wrap">
-              <XIcon className="my-6 h-10 w-10 transform transition-transform group-hover:-rotate-12 text-black dark:text-white group-hover:text-primary" />
+            <h4 className="flex max-w-lg cursor-pointer flex-col text-wrap fill-white duration-200 ease-in-out group-hover:fill-primary group-hover:text-primary">
+              <XIcon className="my-6 size-10 text-black transition-transform group-hover:-rotate-12 group-hover:text-primary dark:text-white" />
               Click here to share this article with your friends on X if you liked it.
             </h4>
           </a>

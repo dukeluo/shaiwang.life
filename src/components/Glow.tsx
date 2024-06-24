@@ -19,9 +19,9 @@ export const Glow = ({ children }: Props) => {
   const background = useMotionTemplate`radial-gradient(100px circle at ${mouseX}px ${mouseY}px, rgb(14 165 233 / 0.15), transparent 80%)`
 
   return (
-    <div onMouseMove={handleMouseMove} className="relative group overflow-visible">
+    <div onMouseMove={handleMouseMove} className="group relative overflow-visible">
       <motion.div
-        className="pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+        className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
         style={{
           background,
         }}

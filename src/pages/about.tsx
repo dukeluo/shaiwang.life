@@ -101,7 +101,7 @@ export default function AboutMe() {
             <Section>
               <Section.Title as="h2">Books worth re-reading</Section.Title>
               <Section.Content>
-                <ul className="mt-1 list-disc list-inside">
+                <ul className="mt-1 list-inside list-disc">
                   {Books.map((book) => (
                     <li key={book.name}>
                       <ExternalLink href={book.link}>{book.name}</ExternalLink>
@@ -113,7 +113,7 @@ export default function AboutMe() {
             <Section>
               <Section.Title as="h2">Podcasts I listen to</Section.Title>
               <Section.Content>
-                <ul className="mt-1 list-disc list-inside">
+                <ul className="mt-1 list-inside list-disc">
                   {Podcasts.map((podcast) => (
                     <li key={podcast.name}>
                       <ExternalLink href={podcast.link}>{podcast.name}</ExternalLink>
@@ -125,7 +125,7 @@ export default function AboutMe() {
             <Section>
               <Section.Title as="h2">Blogs I read</Section.Title>
               <Section.Content>
-                <ul className="mt-1 list-disc list-inside">
+                <ul className="mt-1 list-inside list-disc">
                   {Blogs.map((blog) => (
                     <li key={blog.name}>
                       <ExternalLink href={blog.link}>{blog.name}</ExternalLink>
@@ -137,7 +137,7 @@ export default function AboutMe() {
             <Section>
               <Section.Title as="h2">Videos worth watching</Section.Title>
               <Section.Content>
-                <ul className="mt-1 list-disc list-inside">
+                <ul className="mt-1 list-inside list-disc">
                   {VideosWorthWatching.map((video) => (
                     <li key={video.name}>
                       <ExternalLink href={video.link}>{video.name}</ExternalLink>

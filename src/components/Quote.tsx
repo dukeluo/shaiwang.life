@@ -9,10 +9,10 @@ type Props = {
 
 export const Quote = ({ className, quote, author }: Props) => {
   return (
-    <blockquote className={clsx(className, 'rounded-md bg-zinc-100 p-4 dark:bg-zinc-800 border-l-0 ')}>
-      <div className="relative text-lg font-medium md:flex-grow overflow-visible">
+    <blockquote className={clsx(className, 'rounded-md border-l-0 bg-zinc-100 p-4 dark:bg-zinc-800 ')}>
+      <div className="relative overflow-visible text-lg font-medium md:grow">
         <svg
-          className="absolute top-0 left-0 h-8 w-8 -ml-8 -mt-8 text-zinc-300 z-10"
+          className="absolute left-0 top-0 z-10 -ml-8 -mt-8 size-8 text-zinc-300"
           fill="currentColor"
           viewBox="0 0 32 32"
           aria-hidden="true"

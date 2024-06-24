@@ -82,7 +82,7 @@ export const DesktopNavigation = (props: React.PropsWithChildren<React.HTMLAttri
           }
 
           return (
-            <a key={item.href} className="transition hover:text-primary px-3 py-2" href={item.href} target="_blank">
+            <a key={item.href} className="px-3 py-2 transition hover:text-primary" href={item.href} target="_blank">
               {item.name}
             </a>
           )
@@ -126,7 +126,7 @@ export const MobileNavigation = (props: React.HTMLAttributes<HTMLDivElement>) =>
           >
             <div className="flex flex-row-reverse items-center justify-between">
               <Popover.Button aria-label="Close menu" className="-m-1 p-1">
-                <CloseIcon className="h-6 w-6 text-zinc-500 dark:text-zinc-400" />
+                <CloseIcon className="size-6 text-zinc-500 dark:text-zinc-400" />
               </Popover.Button>
               <h2 className="text-sm font-medium">Navigation</h2>
             </div>

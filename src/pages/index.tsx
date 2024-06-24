@@ -26,7 +26,7 @@ export default function Home() {
       <Container className="mt-9">
         <div className="max-w-2xl">
           <PageTitle>{Name}</PageTitle>
-          <p className="mt-6 max-w-2xl text-base text-balance">{About}</p>
+          <p className="mt-6 max-w-2xl text-balance text-base">{About}</p>
           <div className="mt-6 flex gap-6">
             {SocialMedia.map((socialProfile) => (
               <SocialLink
