@@ -1,16 +1,16 @@
+import hljs from 'highlight.js'
 import { GetStaticPaths, GetStaticProps } from 'next'
 import { ArticleJsonLd, NextSeo } from 'next-seo'
-import Prism from 'prismjs'
 import { useEffect } from 'react'
 
 import { XIcon } from '../../components/icons/XIcon'
 import { NoteLayout } from '../../components/notes/NoteLayout'
 import { NotionBlockRenderer } from '../../components/notion/NotionBlockRenderer'
 import { notesApi } from '../../lib/notesApi'
-import { NotionPage as NoteType } from '../../lib/types'
+import { NotionPage } from '../../lib/types'
 
 type Props = {
-  note: NoteType
+  note: NotionPage
   noteContent: any[]
 }
 
@@ -19,11 +19,11 @@ export default function Note({
   noteContent,
   previousPathname,
 }: Props & { previousPathname: string }) {
-  const url = `${process.env.NEXT_PUBLIC_URL}/notes/${slug}`
-  const openGraphImageUrl = `${process.env.NEXT_PUBLIC_URL}/api/og?title=${title}&description=${description}`
+  const url = `${process.env.SITE_URL}/notes/${slug}`
+  const openGraphImageUrl = `${process.env.SITE_URL}/api/og?title=${title}&description=${description}`
 
   useEffect(() => {
-    Prism.highlightAll()
+    hljs.highlightAll()
   }, [])
 
   return (
@@ -41,7 +41,7 @@ export default function Note({
         images={[openGraphImageUrl]}
         title={title}
         datePublished={createdAt}
-        authorName="Bartosz Jarocki"
+        authorName={process.env.SITE_AUTHOR}
         description={description}
       />
       <NoteLayout meta={{ title, description, date: createdAt }} previousPathname={previousPathname}>

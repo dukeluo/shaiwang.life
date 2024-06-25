@@ -105,8 +105,11 @@ export const NotionBlockRenderer = ({ block }: Props) => {
       return <Quote key={id} quote={value.rich_text[0].plain_text} />
     case 'code':
       return (
-        <pre className={`language-${value.language}`}>
-          <code key={id}>{value.rich_text[0].plain_text}</code>
+        <pre>
+          {/* eslint-disable-next-line tailwindcss/no-custom-classname */}
+          <code key={id} className={`language-${value.language}`}>
+            {value.rich_text[0].plain_text}
+          </code>
         </pre>
       )
     case 'file':

@@ -1,6 +1,5 @@
 import 'focus-visible'
 import '../styles/index.css'
-import '../styles/prism.css'
 
 import { Analytics } from '@vercel/analytics/react'
 import { AppProps } from 'next/app'
