@@ -15,7 +15,7 @@
     "@heroicons/react": "^2.0.18",
     "@mapbox/rehype-prism": "^0.8.0",
     "@notionhq/client": "^2.2.3",
-    "@tailwindcss/typography": "^0.5.7",
+    "@tailwindcss/typography": "^0.5.13",
     "@types/prismjs": "^1.26.0",
     "@vercel/analytics": "^1.0.2",
     "@vercel/og": "^0.5.17",
@@ -53,7 +53,7 @@
     "next-sitemap": "^4.2.3",
     "postcss": "^8.4.14",
     "prettier": "^3.0.3",
-    "tailwindcss": "^3.3.2",
+    "tailwindcss": "^3.4.4",
     "typescript": "^5.2.2"
   },
   "license": "MIT",
