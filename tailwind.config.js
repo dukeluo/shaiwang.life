@@ -6,7 +6,7 @@ module.exports = {
     extend: {
       fontFamily: {
         sans: [
-          'LXGW WenKai Lite',
+          'LXGW WenKai Screen',
           'ui-sans-serif',
           'system-ui',
           '-apple-system',
@@ -23,7 +23,7 @@ module.exports = {
           'Noto Color Emoji',
         ],
         mono: [
-          'LXGW WenKai Mono Lite',
+          'LXGW WenKai Mono Screen',
           'ui-monospace',
           'SFMono-Regular',
           'Menlo',

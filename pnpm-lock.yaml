@@ -105,7 +105,7 @@ importers:
       highlight.js:
         specifier: ^11.9.0
         version: 11.9.0
-      lxgw-wenkai-lite-webfont:
+      lxgw-wenkai-screen-webfont:
         specifier: ^1.7.0
         version: 1.7.0
       next-seo:
@@ -1723,8 +1723,8 @@ packages:
     resolution: {integrity: sha512-9hp3Vp2/hFQUiIwKo8XCeFVnrg8Pk3TYNPIR7tJADKi5YfcF7vEaK7avFHTlSy3kOKYaJQaalfEo6YuXdceBOQ==}
     engines: {node: 14 || >=16.14}
 
-  lxgw-wenkai-lite-webfont@1.7.0:
-    resolution: {integrity: sha512-VcQYNRpdXAxaZsJ18rfT1mmAreGqkIFNZ/9pdVLbT2Tkb+2lLWJDXq4zYxMEk9AcecSnxO31R2LHh5ieLlxjRg==}
+  lxgw-wenkai-screen-webfont@1.7.0:
+    resolution: {integrity: sha512-xvfF4V26Mb335xKg3uxljz+V2nq4F5ek0ku9pmyKgT0Dzo/d2rHi7WpnqgvM9mlXAcAKOrxrcDmUZiIs/ZQ9bQ==}
 
   merge2@1.4.1:
     resolution: {integrity: sha512-8q7VEgMJW4J8tcfVPy8g09NcQwZdbwFEqhe/WZkoIzjn/3TGDwtOCYtXGxA3O8tPzpczCCDgv+P2P5y00ZJOOg==}
@@ -4419,7 +4419,7 @@ snapshots:
 
   lru-cache@10.2.2: {}
 
-  lxgw-wenkai-lite-webfont@1.7.0: {}
+  lxgw-wenkai-screen-webfont@1.7.0: {}
 
   merge2@1.4.1: {}
 
