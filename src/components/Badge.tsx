@@ -1,4 +1,4 @@
-import classNames from 'classnames'
+import clsx from 'clsx'
 import Link from 'next/link'
 import React, { PropsWithChildren } from 'react'
 
@@ -16,13 +16,13 @@ type Props = (
 export const Badge = ({ className, children, ...otherProps }: PropsWithChildren<Props>) => {
   if ('href' in otherProps)
     return (
-      <Link className={classNames(styles, className)} {...otherProps}>
+      <Link className={clsx(styles, className)} {...otherProps}>
         {children}
       </Link>
     )
 
   return (
-    <button className={classNames(styles, className)} {...otherProps}>
+    <button className={clsx(styles, className)} {...otherProps}>
       {children}
     </button>
   )
