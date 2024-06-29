@@ -7,30 +7,38 @@ import { Fragment } from 'react'
 import { ChevronDownIcon } from './icons/ChevronDownIcon'
 import { CloseIcon } from './icons/CloseIcon'
 
+export enum Route {
+  Home = '/',
+  Blog = '/blog',
+  Notes = '/notes',
+  Creating = '/creating',
+  Uses = '/uses',
+}
+
 export const NavigationItems = [
   {
     name: 'Home',
-    href: '/',
+    href: Route.Home,
     type: 'internal',
   },
   {
     name: 'Blog',
-    href: '/blog',
+    href: Route.Blog,
     type: 'internal',
   },
   {
     name: 'Notes',
-    href: '/notes',
+    href: Route.Notes,
     type: 'internal',
   },
   {
     name: 'Creating',
-    href: '/creating',
+    href: Route.Creating,
     type: 'internal',
   },
   {
     name: 'Uses',
-    href: '/uses',
+    href: Route.Uses,
     type: 'internal',
   },
 ] as const

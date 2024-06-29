@@ -6,6 +6,7 @@ import { ANIMATION_FROM_PROPS, ANIMATION_TO_PROPS } from '../../lib/animation'
 import { formatDate } from '../../lib/date'
 import { NotionPage } from '../../lib/types'
 import { Card } from '../Card'
+import { Route } from '../Navigation'
 
 const StaticBadge = ({ className, children }: React.PropsWithChildren<{ className?: string }>) => (
   <span
@@ -19,27 +20,27 @@ const StaticBadge = ({ className, children }: React.PropsWithChildren<{ classNam
 )
 
 interface Props {
-  note: NotionPage
+  post: NotionPage
   dense?: boolean
 }
 
-export const NotePreview = ({ note, dense }: Props) => {
+export const BlogPostPreview = ({ post, dense }: Props) => {
   return (
     <motion.div initial={ANIMATION_FROM_PROPS} whileInView={ANIMATION_TO_PROPS} viewport={{ once: true }}>
       <article className="md:grid md:grid-cols-4 md:items-baseline">
         <Card className="md:col-span-3">
-          <Card.Title href={`/notes/${note.slug}`}>{note.title}</Card.Title>
-          <Card.Eyebrow as="time" dateTime={note.publishedAt} className={clsx(!dense && 'md:hidden')} decorate>
-            {formatDate(note.publishedAt)}
-            {note.inProgress && <StaticBadge className="ml-4">Work in progress</StaticBadge>}
+          <Card.Title href={`${Route.Blog}/${post.slug}`}>{post.title}</Card.Title>
+          <Card.Eyebrow as="time" dateTime={post.publishedAt} className={clsx(!dense && 'md:hidden')} decorate>
+            {formatDate(post.publishedAt)}
+            {post.inProgress && <StaticBadge className="ml-4">Work in progress</StaticBadge>}
           </Card.Eyebrow>
-          <Card.Description>{note.description}</Card.Description>
+          <Card.Description>{post.description}</Card.Description>
           <Card.Cta>Read note</Card.Cta>
         </Card>
         {!dense && (
-          <Card.Eyebrow as="time" dateTime={note.publishedAt} className="mt-1 hidden md:block">
-            {formatDate(note.publishedAt)}
-            {note.inProgress && <StaticBadge className="mt-2">Work in progress</StaticBadge>}
+          <Card.Eyebrow as="time" dateTime={post.publishedAt} className="mt-1 hidden md:block">
+            {formatDate(post.publishedAt)}
+            {post.inProgress && <StaticBadge className="mt-2">Work in progress</StaticBadge>}
           </Card.Eyebrow>
         )}
       </article>

@@ -4,22 +4,19 @@ import { ArticleJsonLd, NextSeo } from 'next-seo'
 import { useEffect } from 'react'
 
 import { XIcon } from '../../components/icons/XIcon'
-import { NoteLayout } from '../../components/notes/NoteLayout'
+import { Route } from '../../components/Navigation'
+import { BlogLayout } from '../../components/notes/BlogLayout'
 import { NotionBlockRenderer } from '../../components/notion/NotionBlockRenderer'
 import { notesApi } from '../../lib/notesApi'
 import { NotionPage } from '../../lib/types'
 
-type Props = {
+interface BlogProps {
   note: NotionPage
   noteContent: any[]
 }
 
-export default function Note({
-  note: { title, description, createdAt, slug },
-  noteContent,
-  previousPathname,
-}: Props & { previousPathname: string }) {
-  const url = `${process.env.SITE_URL}/notes/${slug}`
+export default function Blog({ note: { title, description, createdAt, slug }, noteContent }: BlogProps) {
+  const url = `${process.env.SITE_URL}${Route.Blog}/${slug}`
   const openGraphImageUrl = `${process.env.SITE_URL}/api/og?title=${title}&description=${description}`
 
   useEffect(() => {
@@ -44,7 +41,7 @@ export default function Note({
         authorName={process.env.SITE_AUTHOR}
         description={description}
       />
-      <NoteLayout meta={{ title, description, date: createdAt }} previousPathname={previousPathname}>
+      <BlogLayout meta={{ title, description, date: createdAt }}>
         <div className="pb-32">
           {noteContent.map((block) => (
             <NotionBlockRenderer key={block.id} block={block} />
@@ -62,12 +59,12 @@ export default function Note({
             </h4>
           </a>
         </div>
-      </NoteLayout>
+      </BlogLayout>
     </>
   )
 }
 
-export const getStaticProps: GetStaticProps<Props, { slug: string }> = async (context) => {
+export const getStaticProps: GetStaticProps<BlogProps, { slug: string }> = async (context) => {
   const slug = context.params?.slug
   const allNotes = await notesApi.getNotes()
   const note = allNotes.find((n) => n.slug === slug)

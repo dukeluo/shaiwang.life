@@ -2,7 +2,7 @@ import { GetStaticPaths, GetStaticProps } from 'next'
 import { NextSeo } from 'next-seo'
 import React from 'react'
 
-import { NotePreview } from '../../components/notes/NotePreview'
+import { BlogPostPreview } from '../../components/notes/BlogPostPreview'
 import { PageLayout } from '../../components/PageLayout'
 import { notesApi } from '../../lib/notesApi'
 import { NotionPage } from '../../lib/types'
@@ -34,7 +34,7 @@ export default function Tag({ tag, relatedNotes }: Props) {
         <div className="mt-24 md:border-l md:border-zinc-100 md:pl-6 md:dark:border-zinc-700/40">
           <div className="flex max-w-3xl flex-col space-y-16">
             {relatedNotes.map((note) => (
-              <NotePreview key={note.slug} note={note} />
+              <BlogPostPreview key={note.slug} post={note} />
             ))}
           </div>
         </div>
