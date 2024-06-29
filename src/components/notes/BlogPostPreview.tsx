@@ -30,17 +30,15 @@ export const BlogPostPreview = ({ post, dense }: Props) => {
       <article className="md:grid md:grid-cols-4 md:items-baseline">
         <Card className="md:col-span-3">
           <Card.Title href={`${Route.Blog}/${post.slug}`}>{post.title}</Card.Title>
-          <Card.Eyebrow as="time" dateTime={post.publishedAt} className={clsx(!dense && 'md:hidden')} decorate>
-            {formatDate(post.publishedAt)}
-            {post.inProgress && <StaticBadge className="ml-4">Work in progress</StaticBadge>}
+          <Card.Eyebrow as="time" dateTime={post.createdAt} className={clsx(!dense && 'md:hidden')} decorate>
+            {formatDate(post.createdAt)}
           </Card.Eyebrow>
           <Card.Description>{post.description}</Card.Description>
           <Card.Cta>Read note</Card.Cta>
         </Card>
         {!dense && (
-          <Card.Eyebrow as="time" dateTime={post.publishedAt} className="mt-1 hidden md:block">
-            {formatDate(post.publishedAt)}
-            {post.inProgress && <StaticBadge className="mt-2">Work in progress</StaticBadge>}
+          <Card.Eyebrow as="time" dateTime={post.createdAt} className="mt-1 hidden md:block">
+            {formatDate(post.createdAt)}
           </Card.Eyebrow>
         )}
       </article>

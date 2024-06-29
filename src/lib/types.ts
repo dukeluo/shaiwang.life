@@ -20,8 +20,4 @@ export interface NotionPage {
   tags: string[]
   description: string
   cover: string | null
-  // deprecated
-  isPublished: boolean
-  publishedAt: string
-  inProgress: boolean
 }

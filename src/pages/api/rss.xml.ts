@@ -15,7 +15,7 @@ const rss: NextApiHandler = async (req, res) => {
     feed.item({
       title: post.title,
       url: `${process.env.SITE_URL}/${post.slug}`,
-      date: post.publishedAt,
+      date: post.createdAt,
       description: post.description,
     })
   })

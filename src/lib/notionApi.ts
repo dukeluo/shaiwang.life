@@ -135,9 +135,6 @@ class NotionApi {
         description:
           'rich_text' in page.properties.description ? page.properties.description.rich_text[0].plain_text : '',
         cover: page.cover?.type === 'external' ? page.cover.external.url : null,
-        isPublished: true,
-        publishedAt: '',
-        inProgress: false,
       }))
       .filter((page) => page.status === NotionPageStatus.Public)
 
@@ -149,10 +146,9 @@ class NotionApi {
 
     const blocksChildren = await Promise.all(
       blocks.map(async (block) => {
-        const { id } = block
         const contents = block[block.type as keyof typeof block] as any
         if (!['unsupported', 'child_page'].includes(block.type) && block.has_children) {
-          contents.children = await this.getBlocks(id)
+          contents.children = await this.getBlocks(block.id)
         }
 
         return block

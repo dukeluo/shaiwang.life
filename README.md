@@ -29,9 +29,6 @@ application expects the following properties to be configured in the database:
 6. `title`
 7. `description`
 8. `slug` - used as a notes slug for example in `/notes/hello-world` the slug would be `hello-world`
-9. `published` - used to filter unpublished notes from available notes list
-10. `publishedAt`
-11. `inProgress` - used to display `Work in progress` badge on in the notes list
 
 After defining environment variables and your Notion database, run the application
 
