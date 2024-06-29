@@ -4,7 +4,7 @@ import { NextSeo } from 'next-seo'
 import { Badge } from '../../components/Badge'
 import { BlogPostPreview } from '../../components/notes/BlogPostPreview'
 import { PageLayout } from '../../components/PageLayout'
-import { notesApi } from '../../lib/notesApi'
+import { notionApi } from '../../lib/notionApi'
 import { NotionPage } from '../../lib/types'
 
 const seoTitle = 'Blog'
@@ -52,7 +52,7 @@ export default function Blog({ blogPosts, tags }: Props) {
 }
 
 export const getStaticProps: GetStaticProps<Props> = async () => {
-  const blogPosts = await notesApi.getNotes('desc')
+  const blogPosts = await notionApi.getBlog('desc')
 
   return {
     props: {

@@ -5,10 +5,6 @@ import { getPlaiceholder } from 'plaiceholder'
 
 import { NotionPage, NotionPageStatus, NotionPageType } from './types'
 
-const notionClient = new Client({
-  auth: process.env.NOTION_TOKEN,
-})
-
 const noop = async (block: BlockObjectResponse) => block
 
 /**
@@ -68,45 +64,50 @@ const BlockTypeTransformLookup: Record<BlockType, (block: BlockObjectResponse) =
   unsupported: noop,
 }
 
-const CompareFunctionLookup = {
-  asc: compareAsc,
-  desc: compareDesc,
-}
+class NotionApi {
+  private readonly notion: Client
+  private readonly databaseId: string
+  private cache: NotionPage[] | null = null
 
-class NotesApi {
-  constructor(
-    private readonly notion: Client,
-    private readonly databaseId: string
-  ) {}
+  constructor() {
+    this.notion = new Client({ auth: process.env.NOTION_TOKEN })
+    this.databaseId = process.env.NOTION_DATABASE_ID!
+  }
 
-  async getNotes(sortOrder: 'asc' | 'desc' = 'desc', limit?: number) {
-    const notes = await this.getDatabaseContent(this.databaseId)
+  async getBlog(sortOrder: 'asc' | 'desc' = 'desc', limit?: number) {
+    const pages = await this.getDatabaseContent(this.databaseId)
+    const CompareFunctionLookup = {
+      asc: compareAsc,
+      desc: compareDesc,
+    }
 
-    return notes
-      .sort((a, b) => {
-        return CompareFunctionLookup[sortOrder](new Date(a.publishedAt), new Date(b.publishedAt))
-      })
+    return pages
+      .filter((p) => p.type === NotionPageType.Blog)
+      .sort((a, b) => CompareFunctionLookup[sortOrder](new Date(a.createdAt), new Date(b.createdAt)))
       .slice(0, limit)
   }
 
-  async getNotesByTag(tag: string, sortOrder: 'asc' | 'desc' = 'desc', limit?: number) {
-    const notes = await notesApi.getNotes(sortOrder, limit)
-    const relatedNotes = notes.filter((post) => post.tags.includes(tag))
+  async getBlogByTag(tag: string, sortOrder: 'asc' | 'desc' = 'desc', limit?: number) {
+    const notes = await notionApi.getBlog(sortOrder, limit)
 
-    return relatedNotes
+    return notes.filter((post) => post.tags.includes(tag))
   }
 
-  async getNote(id: string) {
+  async getBlogContent(id: string) {
     return this.getPageContent(id)
   }
 
   async getAllTags() {
-    const posts = await notesApi.getNotes()
+    const posts = await notionApi.getBlog()
 
     return Array.from(new Set(posts.map((note) => note.tags).flat()))
   }
 
   private getDatabaseContent = async (databaseId: string): Promise<NotionPage[]> => {
+    if (this.cache) {
+      return this.cache
+    }
+
     const db = await this.notion.databases.query({ database_id: databaseId })
 
     while (db.has_more && db.next_cursor) {
@@ -119,30 +120,28 @@ class NotesApi {
       db.next_cursor = next_cursor
     }
 
-    return db.results
-      .map((page) => {
-        if (!isFullPage(page)) {
-          throw new Error('Notion page is not a full page')
-        }
+    this.cache = db.results
+      .filter((page) => isFullPage(page))
+      .map((page) => ({
+        id: page.id,
+        createdAt: page.created_time,
+        lastEditedAt: page.last_edited_time,
+        title: 'title' in page.properties.title ? page.properties.title.title[0].plain_text : '',
+        slug: 'rich_text' in page.properties.slug ? page.properties.slug.rich_text[0].plain_text : '',
+        status: ('select' in page.properties.status ? page.properties.status.select?.name : '') as NotionPageStatus,
+        type: ('select' in page.properties.type ? page.properties.type.select?.name : '') as NotionPageType,
+        category: 'select' in page.properties.category ? page.properties.category.select?.name! : '',
+        tags: 'multi_select' in page.properties.tags ? page.properties.tags.multi_select.map(({ name }) => name) : [],
+        description:
+          'rich_text' in page.properties.description ? page.properties.description.rich_text[0].plain_text : '',
+        cover: page.cover?.type === 'external' ? page.cover.external.url : null,
+        isPublished: true,
+        publishedAt: '',
+        inProgress: false,
+      }))
+      .filter((page) => page.status === NotionPageStatus.Public)
 
-        return {
-          id: page.id,
-          createdAt: page.created_time,
-          lastEditedAt: page.last_edited_time,
-          title: 'title' in page.properties.title ? page.properties.title.title[0].plain_text : '',
-          slug: 'rich_text' in page.properties.slug ? page.properties.slug.rich_text[0].plain_text : '',
-          status: NotionPageStatus.Public,
-          type: NotionPageType.Blog,
-          category: '',
-          tags: 'multi_select' in page.properties.tags ? page.properties.tags.multi_select.map((tag) => tag.name) : [],
-          description: 'rich_text' in page.properties.slug ? page.properties.slug.rich_text[0].plain_text : '',
-          cover: page.cover?.type === 'external' ? page.cover.external.url : null,
-          isPublished: true,
-          publishedAt: '',
-          inProgress: false,
-        }
-      })
-      .filter((post) => post.isPublished)
+    return this.cache
   }
 
   private getPageContent = async (pageId: string) => {
@@ -211,4 +210,4 @@ class NotesApi {
   }
 }
 
-export const notesApi = new NotesApi(notionClient, process.env.NOTION_DATABASE_ID!)
+export const notionApi = new NotionApi()

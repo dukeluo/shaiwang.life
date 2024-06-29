@@ -7,7 +7,7 @@ import { XIcon } from '../../components/icons/XIcon'
 import { Route } from '../../components/Navigation'
 import { BlogLayout } from '../../components/notes/BlogLayout'
 import { NotionBlockRenderer } from '../../components/notion/NotionBlockRenderer'
-import { notesApi } from '../../lib/notesApi'
+import { notionApi } from '../../lib/notionApi'
 import { NotionPage } from '../../lib/types'
 
 interface BlogProps {
@@ -66,7 +66,7 @@ export default function Blog({ note: { title, description, createdAt, slug }, no
 
 export const getStaticProps: GetStaticProps<BlogProps, { slug: string }> = async (context) => {
   const slug = context.params?.slug
-  const allNotes = await notesApi.getNotes()
+  const allNotes = await notionApi.getBlog()
   const note = allNotes.find((n) => n.slug === slug)
 
   if (!note) {
@@ -75,7 +75,7 @@ export const getStaticProps: GetStaticProps<BlogProps, { slug: string }> = async
     }
   }
 
-  const noteContent = await notesApi.getNote(note.id)
+  const noteContent = await notionApi.getBlogContent(note.id)
 
   return {
     props: {
@@ -87,7 +87,7 @@ export const getStaticProps: GetStaticProps<BlogProps, { slug: string }> = async
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const posts = await notesApi.getNotes()
+  const posts = await notionApi.getBlog()
 
   return {
     paths: posts.map((post) => ({ params: { slug: post.slug } })),

@@ -19,7 +19,8 @@ export interface NotionPage {
   category: string
   tags: string[]
   description: string
-  cover?: string | null
+  cover: string | null
+  // deprecated
   isPublished: boolean
   publishedAt: string
   inProgress: boolean

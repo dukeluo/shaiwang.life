@@ -4,7 +4,7 @@ import React from 'react'
 
 import { BlogPostPreview } from '../../components/notes/BlogPostPreview'
 import { PageLayout } from '../../components/PageLayout'
-import { notesApi } from '../../lib/notesApi'
+import { notionApi } from '../../lib/notionApi'
 import { NotionPage } from '../../lib/types'
 
 const seoTitle = 'Tags'
@@ -51,7 +51,7 @@ export const getStaticProps: GetStaticProps<Props, { tag: string }> = async (con
     }
   }
 
-  const relatedNotes = await notesApi.getNotesByTag(tag)
+  const relatedNotes = await notionApi.getBlogByTag(tag)
 
   return {
     props: {
@@ -63,7 +63,7 @@ export const getStaticProps: GetStaticProps<Props, { tag: string }> = async (con
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const tags = await notesApi.getAllTags()
+  const tags = await notionApi.getAllTags()
 
   return {
     paths: tags.map((tag) => ({

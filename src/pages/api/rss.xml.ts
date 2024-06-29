@@ -1,7 +1,7 @@
 import { NextApiHandler } from 'next'
 import RSS from 'rss'
 
-import { notesApi } from '../../lib/notesApi'
+import { notionApi } from '../../lib/notionApi'
 
 const rss: NextApiHandler = async (req, res) => {
   const feed = new RSS({
@@ -10,7 +10,7 @@ const rss: NextApiHandler = async (req, res) => {
     feed_url: `${process.env.SITE_URL}/rss.xml`,
   })
 
-  const allPosts = await notesApi.getNotes()
+  const allPosts = await notionApi.getBlog()
   allPosts.map((post) => {
     feed.item({
       title: post.title,
