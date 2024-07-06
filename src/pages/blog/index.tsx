@@ -21,9 +21,9 @@ export default function Blog({ blogPosts, tags }: Props) {
       <NextSeo
         title={seoTitle}
         description={seoDescription}
-        canonical={`${process.env.SITE_URL}/blog`}
+        canonical={`${process.env.NEXT_PUBLIC_SITE_URL}/blog`}
         openGraph={{
-          images: [{ url: `${process.env.SITE_URL}/api/og?title=${seoTitle}` }],
+          images: [{ url: `${process.env.NEXT_PUBLIC_SITE_URL}/api/og?title=${seoTitle}` }],
         }}
       />
       <PageLayout

@@ -16,8 +16,8 @@ interface BlogProps {
 }
 
 export default function Blog({ note: { title, description, createdAt, slug }, noteContent }: BlogProps) {
-  const url = `${process.env.SITE_URL}${Route.Blog}/${slug}`
-  const openGraphImageUrl = `${process.env.SITE_URL}/api/og?title=${title}&description=${description}`
+  const url = `${process.env.NEXT_PUBLIC_SITE_URL}${Route.Blog}/${slug}`
+  const openGraphImageUrl = `${process.env.NEXT_PUBLIC_SITE_URL}/api/og?title=${title}&description=${description}`
 
   useEffect(() => {
     hljs.highlightAll()
@@ -38,7 +38,7 @@ export default function Blog({ note: { title, description, createdAt, slug }, no
         images={[openGraphImageUrl]}
         title={title}
         datePublished={createdAt}
-        authorName={process.env.SITE_AUTHOR}
+        authorName={process.env.NEXT_PUBLIC_SITE_AUTHOR}
         description={description}
       />
       <BlogLayout meta={{ title, description, date: createdAt }}>

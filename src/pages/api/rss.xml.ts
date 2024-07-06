@@ -5,16 +5,16 @@ import { notionApi } from '../../lib/notionApi'
 
 const rss: NextApiHandler = async (req, res) => {
   const feed = new RSS({
-    title: process.env.SITE_NAME!,
-    site_url: process.env.SITE_URL!,
-    feed_url: `${process.env.SITE_URL}/rss.xml`,
+    title: process.env.NEXT_PUBLIC_SITE_NAME!,
+    site_url: process.env.NEXT_PUBLIC_SITE_URL!,
+    feed_url: `${process.env.NEXT_PUBLIC_SITE_URL}/rss.xml`,
   })
 
   const allPosts = await notionApi.getBlog()
   allPosts.map((post) => {
     feed.item({
       title: post.title,
-      url: `${process.env.SITE_URL}/${post.slug}`,
+      url: `${process.env.NEXT_PUBLIC_SITE_URL}/${post.slug}`,
       date: post.createdAt,
       description: post.description,
     })
