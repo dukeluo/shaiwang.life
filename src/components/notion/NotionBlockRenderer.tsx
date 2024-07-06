@@ -3,7 +3,7 @@ import clsx from 'clsx'
 import Image from 'next/image'
 import Link from 'next/link'
 
-import { Quote } from '../Quote'
+import { Quote } from './Quote'
 
 //TODO: improve types here, cleanup the code
 type Props = {
@@ -136,7 +136,13 @@ export const NotionBlockRenderer = ({ block }: Props) => {
         </a>
       )
     default:
-      return <>❌ Unsupported block (${type === 'unsupported' ? 'unsupported by Notion API' : type})</>
+      return (
+        <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+          <span className="block sm:inline">
+            Unsupported block: ${type === 'unsupported' ? 'unsupported by Notion API' : type}
+          </span>
+        </div>
+      )
   }
 }
 
@@ -157,14 +163,21 @@ const NotionText = ({ textItems }: { textItems: TextRichTextItemResponse[] }) =>
             key={text.content}
             className={clsx({
               'font-bold': bold,
-              'font-mono font-semibold bg-zinc-600 text-zinc-200 px-1 py-0.5 m-1 rounded-md': code,
               italic: italic,
               'line-through': strikethrough,
               underline: underline,
             })}
             style={color !== 'default' ? { color } : {}}
           >
-            {text.link ? <a href={text.link.url}>{text.content}</a> : text.content}
+            {(() => {
+              if (code) {
+                return <code>{text.content}</code>
+              }
+              if (text.link) {
+                return <a href={text.link.url}>{text.content}</a>
+              }
+              return text.content
+            })()}
           </span>
         )
       })}
