@@ -2,7 +2,6 @@ import { ExternalLink } from '../components/ExternalLink'
 import { GitHubIcon } from '../components/icons/GitHubIcon'
 import { InstagramIcon } from '../components/icons/InstagramIcon'
 import { LinkedInIcon } from '../components/icons/LinkedInIcon'
-import { XIcon } from '../components/icons/XIcon'
 
 export const Name = 'Bartosz Jarocki'
 
@@ -30,7 +29,7 @@ export const MyCurrentProjects: Project[] = []
 export const MyPastProjects: Project[] = []
 
 export const SocialMedia = [
-  { name: 'Twitter', link: 'https://twitter.com/BartoszJarocki', icon: XIcon },
+  { name: 'Twitter', link: 'https://twitter.com/BartoszJarocki', icon: null },
   { name: 'Instagram', link: 'https://www.instagram.com/bartosz.jarocki/', icon: InstagramIcon },
   { name: 'Github', link: 'https://github.com/BartoszJarocki', icon: GitHubIcon },
   { name: 'LinkedIn', link: 'https://www.linkedin.com/in/bjarocki', icon: LinkedInIcon },

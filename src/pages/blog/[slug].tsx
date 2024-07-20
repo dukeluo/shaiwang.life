@@ -1,9 +1,9 @@
+import { RiArrowRightSLine } from '@remixicon/react'
 import hljs from 'highlight.js'
 import { GetStaticPaths, GetStaticProps } from 'next'
 import { ArticleJsonLd, NextSeo } from 'next-seo'
 import { useEffect } from 'react'
 
-import { XIcon } from '../../components/icons/XIcon'
 import { Route } from '../../components/Navigation'
 import { BlogLayout } from '../../components/notes/BlogLayout'
 import { NotionBlockRenderer } from '../../components/notion/NotionBlockRenderer'
@@ -42,21 +42,19 @@ export default function Blog({ note: { title, description, createdAt, slug }, no
         description={description}
       />
       <BlogLayout meta={{ title, description, date: createdAt }}>
-        <div className="pb-32">
+        <div className="mb-4 border-b border-zinc-100 dark:border-zinc-700/40">
           {noteContent.map((block) => (
             <NotionBlockRenderer key={block.id} block={block} />
           ))}
-
-          <hr />
-
+        </div>
+        <div className="flex items-center opacity-50">
+          <RiArrowRightSLine />
           <a
-            className="group block text-xl font-semibold no-underline md:text-3xl"
-            href={`http://x.com/share?text=${title}&url=${url}`}
+            href={`https://x.com/share?text=${encodeURIComponent(`Reading @ihuanluo\'s ${url}\n\nI think...`)}&url=${url}`}
+            className="no-underline"
+            target="_blank"
           >
-            <h4 className="flex max-w-lg cursor-pointer flex-col text-wrap fill-white duration-200 ease-in-out group-hover:fill-primary group-hover:text-primary">
-              <XIcon className="my-6 size-10 text-black transition-transform group-hover:-rotate-12 group-hover:text-primary dark:text-white" />
-              Click here to share this article with your friends on X if you liked it.
-            </h4>
+            <span className="font-mono">/comment-on-x</span>
           </a>
         </div>
       </BlogLayout>
