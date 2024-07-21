@@ -1,10 +1,9 @@
-import 'focus-visible'
 import '../styles/index.css'
 
 import { Analytics } from '@vercel/analytics/react'
 import { AppProps } from 'next/app'
 import { ThemeProvider } from 'next-themes'
-import React, { useEffect, useRef } from 'react'
+import { useEffect, useRef } from 'react'
 
 import { Footer } from '../components/Footer'
 import { Header } from '../components/Header'
