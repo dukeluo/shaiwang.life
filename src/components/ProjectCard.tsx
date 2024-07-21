@@ -1,9 +1,9 @@
+import { RiLinksLine } from '@remixicon/react'
 import Image from 'next/image'
 
 import { Project } from '../data/lifeApi'
 import { Badge } from './Badge'
 import { Card } from './Card'
-import { LinkIcon } from './icons/LinkIcon'
 
 interface Props {
   project: Project
@@ -31,7 +31,7 @@ export const ProjectCard = ({ project }: Props) => {
       <div className="relative z-10 mt-auto flex text-sm font-medium text-zinc-400 transition group-hover:text-primary dark:text-zinc-200">
         {project.link ? (
           <p className="flex items-center">
-            <LinkIcon className="size-6 flex-none" />
+            <RiLinksLine className="size-6 flex-none" />
             <span className="ml-2">{project.link.label}</span>
             <span className="ml-2 size-1 rounded-full bg-green-700" />
           </p>

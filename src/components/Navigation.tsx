@@ -1,11 +1,9 @@
 import { Popover, Transition } from '@headlessui/react'
+import { RiCloseLine, RiMenuLine } from '@remixicon/react'
 import clsx from 'clsx'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { Fragment } from 'react'
-
-import { ChevronDownIcon } from './icons/ChevronDownIcon'
-import { CloseIcon } from './icons/CloseIcon'
 
 export enum Route {
   Home = '/',
@@ -105,7 +103,7 @@ export const MobileNavigation = (props: React.HTMLAttributes<HTMLDivElement>) =>
     <Popover {...props}>
       <Popover.Button className="group flex items-center rounded-full bg-white/90 px-4 py-2 text-sm font-medium text-zinc-800 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur dark:bg-zinc-800/90 dark:text-zinc-200 dark:ring-white/10 dark:hover:ring-white/20">
         Menu
-        <ChevronDownIcon className="ml-3 h-auto w-2 stroke-zinc-500 group-hover:stroke-zinc-700 dark:group-hover:stroke-zinc-400" />
+        <RiMenuLine className="ml-3 h-auto w-2 stroke-zinc-500 group-hover:stroke-zinc-700 dark:group-hover:stroke-zinc-400" />
       </Popover.Button>
       <Transition.Root>
         <Transition.Child
@@ -134,7 +132,7 @@ export const MobileNavigation = (props: React.HTMLAttributes<HTMLDivElement>) =>
           >
             <div className="flex flex-row-reverse items-center justify-between">
               <Popover.Button aria-label="Close menu" className="-m-1 p-1">
-                <CloseIcon className="size-6 text-zinc-500 dark:text-zinc-400" />
+                <RiCloseLine className="size-6 text-zinc-500 dark:text-zinc-400" />
               </Popover.Button>
               <h2 className="text-sm font-medium">Navigation</h2>
             </div>

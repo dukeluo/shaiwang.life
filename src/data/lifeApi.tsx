@@ -1,7 +1,6 @@
+import { RiGithubFill, RiLinkedinFill, RiTwitterXFill } from '@remixicon/react'
+
 import { ExternalLink } from '../components/ExternalLink'
-import { GitHubIcon } from '../components/icons/GitHubIcon'
-import { InstagramIcon } from '../components/icons/InstagramIcon'
-import { LinkedInIcon } from '../components/icons/LinkedInIcon'
 
 export const Name = 'Bartosz Jarocki'
 
@@ -29,10 +28,9 @@ export const MyCurrentProjects: Project[] = []
 export const MyPastProjects: Project[] = []
 
 export const SocialMedia = [
-  { name: 'Twitter', link: 'https://twitter.com/BartoszJarocki', icon: null },
-  { name: 'Instagram', link: 'https://www.instagram.com/bartosz.jarocki/', icon: InstagramIcon },
-  { name: 'Github', link: 'https://github.com/BartoszJarocki', icon: GitHubIcon },
-  { name: 'LinkedIn', link: 'https://www.linkedin.com/in/bjarocki', icon: LinkedInIcon },
+  { name: 'X', link: 'https://twitter.com/BartoszJarocki', icon: RiTwitterXFill },
+  { name: 'Github', link: 'https://github.com/BartoszJarocki', icon: RiGithubFill },
+  { name: 'LinkedIn', link: 'https://www.linkedin.com/in/bjarocki', icon: RiLinkedinFill },
 ] as const
 
 export const Work = []
