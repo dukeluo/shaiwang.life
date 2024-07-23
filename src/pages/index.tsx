@@ -1,32 +1,69 @@
+import {
+  RiGithubFill,
+  RiLinkedinFill,
+  RiNpmjsFill,
+  RiRssFill,
+  RiStackOverflowFill,
+  RiTwitterXFill,
+  RiWechatFill,
+} from '@remixicon/react'
 import { NextSeo } from 'next-seo'
 
 import { Container } from '../components/Container'
+import { ExternalLink } from '../components/ExternalLink'
 import { PageTitle } from '../components/PageTitle'
 import { SocialLink } from '../components/SocialLink'
-import { About, Name, SocialMedia } from '../data/lifeApi'
 
-const seoTitle = 'Bartosz Jarocki'
-const seoDescription = 'A passionate software engineer with an eye for details based in Wrocław, Poland.'
+const SocialMedia = [
+  { name: 'X', link: 'https://x.com/ihuanluo', icon: RiTwitterXFill },
+  { name: 'WeChat', link: 'https://mp.weixin.qq.com/s/dyRGCLy9VStJwd3gPBO1_w', icon: RiWechatFill },
+  { name: 'LinkedIn', link: 'https://www.linkedin.com/in/ihuanluo', icon: RiLinkedinFill },
+  { name: 'Github', link: 'https://github.com/dukeluo', icon: RiGithubFill },
+  { name: 'StackOverflow', link: 'https://stackoverflow.com/users/12814009/huan', icon: RiStackOverflowFill },
+  { name: 'npm', link: 'https://www.npmjs.com/~dukeluo', icon: RiNpmjsFill },
+  { name: 'RSS', link: 'https://www.npmjs.com/~dukeluo', icon: RiRssFill },
+]
+
+const Title = 'Huan Luo'
+const Description = "A passionate software engineer Huan Luo's bio page"
 
 export default function Home() {
   return (
     <>
       <NextSeo
-        title={seoTitle}
-        description={seoDescription}
-        canonical={`${process.env.NEXT_PUBLIC_URL}`}
+        title={Title}
+        description={Description}
+        canonical={`${process.env.NEXT_PUBLIC_SITE_URL}`}
         openGraph={{
           images: [
             {
-              url: `${process.env.NEXT_PUBLIC_URL}/api/og?title=${seoTitle}&description=${seoDescription}`,
+              url: `${process.env.NEXT_PUBLIC_SITE_URL}/api/og?title=${Title}&description=${Description}`,
             },
           ],
         }}
       />
       <Container className="mt-9">
         <div className="max-w-2xl">
-          <PageTitle>{Name}</PageTitle>
-          <p className="mt-6 max-w-2xl text-balance text-base">{About}</p>
+          <PageTitle>Hello there.</PageTitle>
+          <div className="flex flex-col gap-4">
+            <p className="mt-6 max-w-2xl text-balance text-base">
+              I’m <span className="font-bold">Huan</span>, a front-end engineer who loves building{' '}
+              <span className="font-bold">polished web applications</span>. I dream of one day building{' '}
+              <span className="font-bold">my own product</span> with a lot of users.
+            </p>
+            <p>
+              Currently crafting at{' '}
+              <ExternalLink href="https://www.boxo.io/">
+                <span className="font-bold">Boxo</span>
+              </ExternalLink>
+              , previously at{' '}
+              <ExternalLink href="https://www.thoughtworks.com/">
+                {' '}
+                <span className="font-bold">Thoughtworks</span>
+              </ExternalLink>
+              .
+            </p>
+          </div>
           <div className="mt-6 flex gap-6">
             {SocialMedia.map((socialProfile) => (
               <SocialLink

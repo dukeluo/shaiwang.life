@@ -1,17 +1,3 @@
-import { RiGithubFill, RiLinkedinFill, RiTwitterXFill } from '@remixicon/react'
-
-import { ExternalLink } from '../components/ExternalLink'
-
-export const Name = 'Bartosz Jarocki'
-
-export const About = (
-  <>
-    {`I used to consider myself a software engineer, but the reality is that I simply enjoy creating things. If you'd like to get in touch,`}{' '}
-    <ExternalLink href="mailto:bartosz@jarocki.me">send me an email.</ExternalLink>
-  </>
-)
-export const AboutExtended = `I live in Wrocław, Poland, having grown up in the small town of Góra in the western part of the country. I have a bachelor's degree in Control Systems Engineering and Robotics from the Wrocław University of Technology. I like programming, books, plants, mountain biking, whisky, and traveling the world with my wife, Kasia. The cosmos fascinates me, and I take great delight in gazing at the stars.`
-
 export type Project = {
   title: string
   techStack: string[]
@@ -26,12 +12,6 @@ export type Project = {
 export const MyCurrentProjects: Project[] = []
 
 export const MyPastProjects: Project[] = []
-
-export const SocialMedia = [
-  { name: 'X', link: 'https://twitter.com/BartoszJarocki', icon: RiTwitterXFill },
-  { name: 'Github', link: 'https://github.com/BartoszJarocki', icon: RiGithubFill },
-  { name: 'LinkedIn', link: 'https://www.linkedin.com/in/bjarocki', icon: RiLinkedinFill },
-] as const
 
 export const Work = []
 
