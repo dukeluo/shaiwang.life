@@ -1,26 +1,11 @@
-import clsx from 'clsx'
 import Image from 'next/image'
 import Link from 'next/link'
-import React from 'react'
 
-import { Container } from './Container'
 import { DesktopNavigation, MobileNavigation } from './Navigation'
 import { ThemeToggle } from './ThemeToggle'
 
-const AvatarContainer = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) => {
-  return (
-    <div
-      className={clsx(
-        className,
-        'size-10 rounded-full bg-white/90 p-0.5 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur dark:bg-zinc-800/90 dark:ring-white/10'
-      )}
-      {...props}
-    />
-  )
-}
-
-const Avatar = () => {
-  return (
+const Avatar = () => (
+  <div className="size-10 rounded-full bg-white/90 p-0.5 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur dark:bg-zinc-800/90 dark:ring-white/10">
     <Link href="/" aria-label="Home" className="pointer-events-auto">
       <Image
         src=""
@@ -30,31 +15,21 @@ const Avatar = () => {
         priority
       />
     </Link>
-  )
-}
+  </div>
+)
 
 export const Header = () => {
   return (
-    <header className="pointer-events-none relative z-50 flex flex-col">
-      <div className="top-0 z-10 h-16 pt-6">
-        <Container className="w-full">
-          <div className="relative flex gap-4">
-            <div className="flex flex-1">
-              <AvatarContainer>
-                <Avatar />
-              </AvatarContainer>
-            </div>
-            <div className="flex flex-1 justify-end md:justify-center">
-              <MobileNavigation className="pointer-events-auto md:hidden" />
-              <DesktopNavigation className="pointer-events-auto hidden md:block" />
-            </div>
-            <div className="flex justify-end md:flex-1">
-              <div className="pointer-events-auto">
-                <ThemeToggle />
-              </div>
-            </div>
-          </div>
-        </Container>
+    <header className="pointer-events-none relative top-0 flex h-16 gap-4 pt-6">
+      <div className="flex flex-1">
+        <Avatar />
+      </div>
+      <div className="flex flex-1 justify-end md:justify-center">
+        <MobileNavigation className="pointer-events-auto md:hidden" />
+        <DesktopNavigation className="pointer-events-auto hidden md:block" />
+      </div>
+      <div className="pointer-events-auto flex justify-end md:flex-1">
+        <ThemeToggle />
       </div>
     </header>
   )
