@@ -2,7 +2,7 @@ import { GetStaticProps } from 'next'
 import { NextSeo } from 'next-seo'
 
 import { Badge } from '../../components/Badge'
-import { BlogPostPreview } from '../../components/notes/BlogPostPreview'
+import { BlogPostPreview } from '../../components/blog/BlogPostPreview'
 import { PageLayout } from '../../components/PageLayout'
 import { notionApi } from '../../lib/notionApi'
 import { NotionPage } from '../../lib/types'

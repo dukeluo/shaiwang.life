@@ -2,7 +2,7 @@ import { GetStaticPaths, GetStaticProps } from 'next'
 import { NextSeo } from 'next-seo'
 import React from 'react'
 
-import { BlogPostPreview } from '../../components/notes/BlogPostPreview'
+import { BlogPostPreview } from '../../components/blog/BlogPostPreview'
 import { PageLayout } from '../../components/PageLayout'
 import { notionApi } from '../../lib/notionApi'
 import { NotionPage } from '../../lib/types'
