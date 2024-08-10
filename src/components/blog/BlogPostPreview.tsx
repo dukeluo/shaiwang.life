@@ -1,23 +1,11 @@
 import clsx from 'clsx'
 import { motion } from 'framer-motion'
-import React from 'react'
 
 import { ANIMATION_FROM_PROPS, ANIMATION_TO_PROPS } from '../../lib/animation'
 import { formatDate } from '../../lib/date'
 import { NotionPage } from '../../lib/types'
 import { Card } from '../Card'
 import { Route } from '../Navigation'
-
-const StaticBadge = ({ className, children }: React.PropsWithChildren<{ className?: string }>) => (
-  <span
-    className={clsx(
-      className,
-      'inline-flex items-center rounded-md bg-primary px-2 py-0 text-xs font-medium text-white'
-    )}
-  >
-    {children}
-  </span>
-)
 
 interface Props {
   post: NotionPage
@@ -34,7 +22,7 @@ export const BlogPostPreview = ({ post, dense }: Props) => {
             {formatDate(post.createdAt)}
           </Card.Eyebrow>
           <Card.Description>{post.description}</Card.Description>
-          <Card.Cta>Read note</Card.Cta>
+          <Card.Cta>Read more</Card.Cta>
         </Card>
         {!dense && (
           <Card.Eyebrow as="time" dateTime={post.createdAt} className="mt-1 hidden md:block">

@@ -24,10 +24,7 @@ export default function Creating() {
           ],
         }}
       />
-      <PageLayout
-        title="Things I've made trying to put my dent in the universe."
-        intro="A list of projects I've worked on, I'm working on and I will work on."
-      >
+      <PageLayout title="Things I've made trying to put my dent in the universe.">
         <h2 className="text-2xl font-bold tracking-tight">Now</h2>
         <p className="mt-2 text-base">Projects I currently work on.</p>
         <ul role="list" className="mt-12 grid grid-cols-1 gap-x-12 gap-y-16 sm:grid-cols-2 lg:grid-cols-3">
