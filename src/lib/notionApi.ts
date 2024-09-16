@@ -98,6 +98,10 @@ class NotionApi {
     return this.getPage(NotionPageType.Note, sortOrder, limit)
   }
 
+  async getNoteContent(id: string) {
+    return this.getPageContent(id)
+  }
+
   private async getPage(type: NotionPageType, sortOrder: 'asc' | 'desc' = 'desc', limit?: number) {
     const pages = await this.getDatabaseContent(this.databaseId)
     const CompareFunctionLookup = {

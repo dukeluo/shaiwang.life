@@ -11,7 +11,7 @@ export const NotePostPreview = ({ post }: { post: NotionPage }) => {
     <motion.div initial={ANIMATION_FROM_PROPS} whileInView={ANIMATION_TO_PROPS} viewport={{ once: true }}>
       <article className="md:grid md:grid-cols-4 md:items-baseline">
         <Card className="md:col-span-4">
-          <Card.Title href={`${Route.Blog}/${post.slug}`}>{post.title}</Card.Title>
+          <Card.Title href={`${Route.Notes}/${post.slug}`}>{post.title}</Card.Title>
           <Card.Description>{formatDate(post.createdAt)}</Card.Description>
         </Card>
       </article>
