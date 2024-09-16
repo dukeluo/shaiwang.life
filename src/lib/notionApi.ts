@@ -75,16 +75,7 @@ class NotionApi {
   }
 
   async getBlog(sortOrder: 'asc' | 'desc' = 'desc', limit?: number) {
-    const pages = await this.getDatabaseContent(this.databaseId)
-    const CompareFunctionLookup = {
-      asc: compareAsc,
-      desc: compareDesc,
-    }
-
-    return pages
-      .filter((p) => p.type === NotionPageType.Blog)
-      .sort((a, b) => CompareFunctionLookup[sortOrder](new Date(a.createdAt), new Date(b.createdAt)))
-      .slice(0, limit)
+    return this.getPage(NotionPageType.Blog, sortOrder, limit)
   }
 
   async getBlogByTag(tag: string, sortOrder: 'asc' | 'desc' = 'desc', limit?: number) {
@@ -101,6 +92,23 @@ class NotionApi {
     const posts = await notionApi.getBlog()
 
     return Array.from(new Set(posts.map((note) => note.tags).flat()))
+  }
+
+  async getNotes(sortOrder: 'asc' | 'desc' = 'desc', limit?: number) {
+    return this.getPage(NotionPageType.Note, sortOrder, limit)
+  }
+
+  private async getPage(type: NotionPageType, sortOrder: 'asc' | 'desc' = 'desc', limit?: number) {
+    const pages = await this.getDatabaseContent(this.databaseId)
+    const CompareFunctionLookup = {
+      asc: compareAsc,
+      desc: compareDesc,
+    }
+
+    return pages
+      .filter((p) => p.type === type)
+      .sort((a, b) => CompareFunctionLookup[sortOrder](new Date(a.createdAt), new Date(b.createdAt)))
+      .slice(0, limit)
   }
 
   private getDatabaseContent = async (databaseId: string): Promise<NotionPage[]> => {
@@ -126,14 +134,17 @@ class NotionApi {
         id: page.id,
         createdAt: page.created_time,
         lastEditedAt: page.last_edited_time,
-        title: 'title' in page.properties.title ? page.properties.title.title[0].plain_text : '',
-        slug: 'rich_text' in page.properties.slug ? page.properties.slug.rich_text[0].plain_text : '',
+        title: 'title' in page.properties.title ? page.properties.title.title.map((p) => p.plain_text).join('') : '',
+        slug:
+          'rich_text' in page.properties.slug ? page.properties.slug.rich_text.map((p) => p.plain_text).join('') : '',
         status: ('select' in page.properties.status ? page.properties.status.select?.name : '') as NotionPageStatus,
         type: ('select' in page.properties.type ? page.properties.type.select?.name : '') as NotionPageType,
         category: 'select' in page.properties.category ? page.properties.category.select?.name! : '',
         tags: 'multi_select' in page.properties.tags ? page.properties.tags.multi_select.map(({ name }) => name) : [],
         description:
-          'rich_text' in page.properties.description ? page.properties.description.rich_text[0].plain_text : '',
+          'rich_text' in page.properties.description
+            ? page.properties.description.rich_text.map((p) => p.plain_text).join('')
+            : '',
         cover: page.cover?.type === 'external' ? page.cover.external.url : null,
       }))
       .filter((page) => page.status === NotionPageStatus.Public)
