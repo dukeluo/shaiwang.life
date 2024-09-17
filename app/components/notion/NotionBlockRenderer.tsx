@@ -1,5 +1,6 @@
 import { TextRichTextItemResponse } from '@notionhq/client/build/src/api-endpoints'
 import clsx from 'clsx'
+import hljs from 'highlight.js'
 import Image from 'next/image'
 import Link from 'next/link'
 
@@ -106,10 +107,12 @@ export const NotionBlockRenderer = ({ block }: Props) => {
     case 'code':
       return (
         <pre>
-          {/* eslint-disable-next-line tailwindcss/no-custom-classname */}
-          <code key={id} className={`language-${value.language}`}>
-            {value.rich_text[0].plain_text}
-          </code>
+          <code
+            key={id}
+            dangerouslySetInnerHTML={{
+              __html: hljs.highlight(value.rich_text[0].plain_text, { language: value.language }).value,
+            }}
+          />
         </pre>
       )
     case 'file':

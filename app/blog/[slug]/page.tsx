@@ -7,9 +7,6 @@ import { NotionBlockRenderer } from '../../components/notion/NotionBlockRenderer
 import { notionApi } from '../../lib/notionApi'
 
 export default async function Blog({ params }: { params: { slug: string } }) {
-  // useEffect(() => {
-  //   hljs.highlightAll()
-  // }, [])
   const blogs = await notionApi.getBlogs()
   const blog = blogs.find((blog) => blog.slug === params.slug)
 
