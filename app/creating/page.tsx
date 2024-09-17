@@ -1,5 +1,6 @@
+'use client'
+
 import { motion } from 'framer-motion'
-import { NextSeo } from 'next-seo'
 
 import { PageLayout } from '../components/PageLayout'
 import { ProjectCard } from '../components/ProjectCard'
@@ -12,18 +13,6 @@ const seoDescription = "Things I've made trying to put my dent in the universe."
 export default function Creating() {
   return (
     <>
-      <NextSeo
-        title={seoTitle}
-        description={seoDescription}
-        canonical={`${process.env.NEXT_PUBLIC_URL}/creating`}
-        openGraph={{
-          images: [
-            {
-              url: `${process.env.NEXT_PUBLIC_URL}/api/og?title=${seoTitle}&description=${seoDescription}`,
-            },
-          ],
-        }}
-      />
       <PageLayout title="Things I've made trying to put my dent in the universe.">
         <h2 className="text-2xl font-bold tracking-tight">Now</h2>
         <p className="mt-2 text-base">Projects I currently work on.</p>

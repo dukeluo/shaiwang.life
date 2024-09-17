@@ -74,12 +74,12 @@ class NotionApi {
     this.databaseId = process.env.NOTION_DATABASE_ID!
   }
 
-  async getBlog(sortOrder: 'asc' | 'desc' = 'desc', limit?: number) {
+  async getBlogs(sortOrder: 'asc' | 'desc' = 'desc', limit?: number) {
     return this.getPage(NotionPageType.Blog, sortOrder, limit)
   }
 
   async getBlogByTag(tag: string, sortOrder: 'asc' | 'desc' = 'desc', limit?: number) {
-    const notes = await notionApi.getBlog(sortOrder, limit)
+    const notes = await notionApi.getBlogs(sortOrder, limit)
 
     return notes.filter((post) => post.tags.includes(tag))
   }
@@ -89,7 +89,7 @@ class NotionApi {
   }
 
   async getAllTags() {
-    const posts = await notionApi.getBlog()
+    const posts = await notionApi.getBlogs()
 
     return Array.from(new Set(posts.map((note) => note.tags).flat()))
   }

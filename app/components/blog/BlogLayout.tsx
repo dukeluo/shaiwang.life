@@ -1,5 +1,7 @@
+'use client'
+
 import { RiArrowLeftLine } from '@remixicon/react'
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/navigation'
 import { ReactNode } from 'react'
 
 import { formatDate } from '../../lib/date'

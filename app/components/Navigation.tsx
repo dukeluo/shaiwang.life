@@ -2,7 +2,7 @@ import { Popover, PopoverBackdrop, PopoverButton, PopoverPanel, Transition, Tran
 import { RiCloseLine, RiMenuLine } from '@remixicon/react'
 import clsx from 'clsx'
 import Link from 'next/link'
-import { useRouter } from 'next/router'
+// import { useRouter } from 'next/router'
 import { Fragment, HTMLAttributes, PropsWithChildren } from 'react'
 
 export enum Route {
@@ -50,7 +50,8 @@ export const NavLink = ({ href, children }: PropsWithChildren<{ href: string }>)
 }
 
 const NavItem = ({ href, children }: PropsWithChildren<{ href: string }>) => {
-  const isActive = useRouter().pathname === href
+  // const isActive = useRouter().pathname === href
+  const isActive = false
 
   return (
     <li>

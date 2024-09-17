@@ -1,5 +1,4 @@
 import { GetStaticPaths, GetStaticProps } from 'next'
-import { NextSeo } from 'next-seo'
 import React from 'react'
 
 import { BlogPostPreview } from '../../components/blog/BlogPostPreview'
@@ -18,18 +17,6 @@ interface Props {
 export default function Tag({ tag, relatedNotes }: Props) {
   return (
     <>
-      <NextSeo
-        title={seoTitle}
-        description={`${seoDescription}#${tag}}`}
-        canonical={`${process.env.NEXT_PUBLIC_URL}/tags/${tag}`}
-        openGraph={{
-          images: [
-            {
-              url: `${process.env.NEXT_PUBLIC_URL}/api/og?title=${seoTitle}&description=${seoDescription}`,
-            },
-          ],
-        }}
-      />
       <PageLayout title={`All the articles from #${tag}`}>
         <div className="mt-24 md:border-l md:border-zinc-100 md:pl-6 md:dark:border-zinc-700/40">
           <div className="flex max-w-3xl flex-col space-y-16">

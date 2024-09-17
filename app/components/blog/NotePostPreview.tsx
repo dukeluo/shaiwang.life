@@ -1,3 +1,5 @@
+'use client'
+
 import { motion } from 'framer-motion'
 
 import { ANIMATION_FROM_PROPS, ANIMATION_TO_PROPS } from '../../lib/animation'

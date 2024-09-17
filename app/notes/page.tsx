@@ -1,32 +1,27 @@
 import { Combobox, ComboboxInput } from '@headlessui/react'
 import { RiSearchLine } from '@remixicon/react'
-import { GetStaticProps } from 'next'
 import { useState } from 'react'
 
-import { Badge } from '../../components/Badge'
-import { NotePostPreview } from '../../components/blog/NotePostPreview'
-import { PageLayout } from '../../components/PageLayout'
-import { notionApi } from '../../lib/notionApi'
-import { NotionPage } from '../../lib/types'
+import { Badge } from '../components/Badge'
+import { NotePostPreview } from '../components/blog/NotePostPreview'
+import { PageLayout } from '../components/PageLayout'
+import { notionApi } from '../lib/notionApi'
 
-interface NotesProps {
-  notes: NotionPage[]
-  tags: string[]
-}
-
-export default function Notes({ notes, tags }: NotesProps) {
-  const [searchQuery, setSearchQuery] = useState<string | null>(null)
-  const [selectedTag, setSelectedTag] = useState<string | null>(null)
+export default async function Notes() {
+  const notes = await notionApi.getNotes('desc')
+  const tags = Array.from(new Set(notes.map((note) => note.tags).flat()))
+  // const [searchQuery, setSearchQuery] = useState<string | null>(null)
+  // const [selectedTag, setSelectedTag] = useState<string | null>(null)
 
   return (
     <PageLayout title="Something I learned today.">
-      <Combobox value={searchQuery} onChange={setSearchQuery}>
+      <Combobox>
         <div className="relative mb-4">
           <RiSearchLine className="absolute left-4 top-4 text-gray-400" />
           <ComboboxInput
             className="w-full rounded-full border p-3 pl-12 text-lg focus:border-transparent focus:outline-none focus:ring-2 focus:ring-blue-500 md:border-zinc-100 md:dark:border-zinc-700/40"
             placeholder="Quick search notes..."
-            onChange={(event) => setSearchQuery(event.target.value)}
+            // onChange={(event) => setSearchQuery(event.target.value)}
           />
         </div>
       </Combobox>
@@ -46,16 +41,4 @@ export default function Notes({ notes, tags }: NotesProps) {
       </div>
     </PageLayout>
   )
-}
-
-export const getStaticProps: GetStaticProps<NotesProps> = async () => {
-  const notes = await notionApi.getNotes('desc')
-
-  return {
-    props: {
-      notes,
-      tags: Array.from(new Set(notes.map((post) => post.tags).flat())),
-    },
-    revalidate: 10,
-  }
 }

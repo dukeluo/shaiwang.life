@@ -1,7 +1,7 @@
 import { NextApiHandler } from 'next'
 import RSS from 'rss'
 
-import { notionApi } from '../../lib/notionApi'
+import { notionApi } from '../../../app/lib/notionApi'
 
 const rss: NextApiHandler = async (req, res) => {
   const feed = new RSS({

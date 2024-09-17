@@ -1,5 +1,5 @@
 module.exports = {
-  content: ['./src/**/*.{tsx,jsx,ts,js}'],
+  content: ['./app/**/*.{tsx,jsx,ts,js}'],
   plugins: [require('@tailwindcss/typography')],
   darkMode: 'class',
   theme: {

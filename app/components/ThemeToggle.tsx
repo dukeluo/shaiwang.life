@@ -1,3 +1,5 @@
+'use client'
+
 import { RiMoonFill, RiSunLine } from '@remixicon/react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { useTheme } from 'next-themes'
