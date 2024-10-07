@@ -1,6 +1,7 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 /.vscode
 /.idea
+
 # dependencies
 /node_modules
 /.pnp
@@ -15,6 +16,8 @@
 
 # production
 /build
+/public/robots.txt
+/public/sitemap*.xml
 
 # misc
 .DS_Store
@@ -33,7 +36,3 @@ yarn-error.log*
 
 # vercel
 .vercel
-
-
-# Contentlayer
-.contentlayer
