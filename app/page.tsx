@@ -83,7 +83,7 @@ export default function Home() {
       </div>
       <Prose className="mt-10 md:mt-0 md:w-7/12">
         <pre>
-          <code dangerouslySetInnerHTML={{ __html: hljs.highlightAuto(PoeticCode).value }} />
+          <code dangerouslySetInnerHTML={{ __html: hljs.highlight(PoeticCode, { language: 'javascript' }).value }} />
         </pre>
       </Prose>
     </div>
