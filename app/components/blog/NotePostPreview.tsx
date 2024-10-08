@@ -1,6 +1,4 @@
-'use client'
-
-import { motion } from 'framer-motion'
+import * as motion from 'framer-motion/client'
 
 import { ANIMATION_FROM_PROPS, ANIMATION_TO_PROPS } from '../../lib/animation'
 import { formatDate } from '../../lib/date'

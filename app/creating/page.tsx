@@ -1,6 +1,4 @@
-'use client'
-
-import { motion } from 'framer-motion'
+import * as motion from 'framer-motion/client'
 
 import { PageLayout } from '../components/PageLayout'
 import { ProjectCard } from '../components/ProjectCard'
