@@ -1,7 +1,7 @@
 import { RiLinksLine } from '@remixicon/react'
 import Image from 'next/image'
 
-import { Project } from '../data/lifeApi'
+import { Project } from '../lib/lifeApi'
 import { Badge } from './Badge'
 import { Card } from './Card'
 

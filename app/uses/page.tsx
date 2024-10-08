@@ -3,7 +3,7 @@ import { NextSeo } from 'next-seo'
 import { PageLayout } from '../components/PageLayout'
 import { Tool } from '../components/tools/Tool'
 import { ToolsSection } from '../components/tools/ToolsSection'
-import { Tools } from '../data/lifeApi'
+import { Tools } from '../lib/lifeApi'
 
 const seoTitle = 'Uses'
 const seoDescription = 'Software I use, gadgets I love, and other things I recommend.'
