@@ -1,4 +1,6 @@
-import { NavigationItems, NavLink } from './Navigation'
+import Link from 'next/link'
+
+import { NavigationItems } from './Navigation'
 
 export const Footer = () => {
   return (
@@ -6,9 +8,9 @@ export const Footer = () => {
       <div className="flex flex-col items-center justify-between gap-6 sm:flex-row">
         <div className="flex gap-6 text-sm font-medium text-zinc-800 dark:text-zinc-200">
           {NavigationItems.map((item) => (
-            <NavLink key={item.href} href={item.href}>
+            <Link key={item.href} href={item.href} className="transition hover:text-primary">
               {item.name}
-            </NavLink>
+            </Link>
           ))}
         </div>
         <p className="text-sm text-zinc-400 dark:text-zinc-500">

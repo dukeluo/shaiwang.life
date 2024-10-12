@@ -2,7 +2,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 import AvatarImage from '../icon.svg'
-import { DesktopNavigation, MobileNavigation } from './Navigation'
+import { Navigation } from './Navigation'
 import { ThemeToggle } from './ThemeToggle'
 
 const Avatar = () => (
@@ -26,8 +26,7 @@ export const Header = () => {
         <Avatar />
       </div>
       <div className="flex flex-1 justify-end md:justify-center">
-        <MobileNavigation className="pointer-events-auto md:hidden" />
-        <DesktopNavigation className="pointer-events-auto hidden md:block" />
+        <Navigation />
       </div>
       <div className="pointer-events-auto flex justify-end md:flex-1">
         <ThemeToggle />
