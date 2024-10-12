@@ -21,7 +21,7 @@ const SocialMedia = [
   { name: 'Github', link: 'https://github.com/dukeluo', icon: RiGithubFill },
   { name: 'StackOverflow', link: 'https://stackoverflow.com/users/12814009/huan', icon: RiStackOverflowFill },
   { name: 'npm', link: 'https://www.npmjs.com/~dukeluo', icon: RiNpmjsFill },
-  { name: 'RSS', link: 'https://www.npmjs.com/~dukeluo', icon: RiRssFill },
+  { name: 'RSS', link: '/feed.xml', icon: RiRssFill },
 ]
 
 const Title = 'Huan Luo'

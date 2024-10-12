@@ -12,6 +12,14 @@ const config = {
       },
     ],
   },
+  async rewrites() {
+    return [
+      {
+        source: '/feed.xml',
+        destination: '/api/feed',
+      },
+    ]
+  },
 }
 
 export default config
