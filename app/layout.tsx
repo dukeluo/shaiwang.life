@@ -3,7 +3,6 @@ import './styles/index.css'
 import { Analytics } from '@vercel/analytics/react'
 import { ThemeProvider } from 'next-themes'
 
-import { Container } from './components/Container'
 import { Footer } from './components/Footer'
 import { Header } from './components/Header'
 
@@ -17,11 +16,17 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <div className="w-full bg-white ring-1 ring-zinc-100 dark:bg-zinc-900 dark:ring-zinc-300/20" />
             </div>
           </div>
-          <Container className="relative">
-            <Header />
-            <main>{children}</main>
-            <Footer />
-          </Container>
+          <div className="relative sm:px-8">
+            <div className="mx-auto max-w-7xl lg:px-8">
+              <div className="relative px-4 sm:px-8 lg:px-12">
+                <div className="mx-auto flex min-h-screen max-w-2xl flex-col lg:max-w-5xl">
+                  <Header />
+                  <main className="grow">{children}</main>
+                  <Footer />
+                </div>
+              </div>
+            </div>
+          </div>
           <Analytics />
         </ThemeProvider>
       </body>
