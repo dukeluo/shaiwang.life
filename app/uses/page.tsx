@@ -1,5 +1,3 @@
-import { NextSeo } from 'next-seo'
-
 import { PageLayout } from '../components/PageLayout'
 import { Tool } from '../components/tools/Tool'
 import { ToolsSection } from '../components/tools/ToolsSection'

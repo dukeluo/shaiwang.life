@@ -8,6 +8,7 @@ import {
   RiWechatFill,
 } from '@remixicon/react'
 import hljs from 'highlight.js'
+import { Metadata } from 'next'
 
 import { ExternalLink } from './components/ExternalLink'
 import { PageTitle } from './components/PageTitle'
@@ -15,19 +16,16 @@ import { Prose } from './components/Prose'
 import { SocialLink } from './components/SocialLink'
 
 const SocialMedia = [
+  { name: 'Github', link: 'https://github.com/dukeluo', icon: RiGithubFill },
   { name: 'X', link: 'https://x.com/ihuanluo', icon: RiTwitterXFill },
   { name: 'WeChat', link: 'https://mp.weixin.qq.com/s/dyRGCLy9VStJwd3gPBO1_w', icon: RiWechatFill },
   { name: 'LinkedIn', link: 'https://www.linkedin.com/in/ihuanluo', icon: RiLinkedinFill },
-  { name: 'Github', link: 'https://github.com/dukeluo', icon: RiGithubFill },
   { name: 'StackOverflow', link: 'https://stackoverflow.com/users/12814009/huan', icon: RiStackOverflowFill },
   { name: 'npm', link: 'https://www.npmjs.com/~dukeluo', icon: RiNpmjsFill },
   { name: 'RSS', link: '/feed.xml', icon: RiRssFill },
 ]
 
-const Title = 'Huan Luo'
-const Description = "A passionate software engineer Huan Luo's bio page"
-
-const PoeticCode = `/* The Endless Journey of Life */
+const PoeticCode = `/* Participation Matters */
 class Life {
   constructor() {
     this.experiences = []
@@ -42,9 +40,34 @@ class Life {
 }
 const myLife = new Life()
 while (myLife.reflect() < Number.POSITIVE_INFINITY) {
-  const next = World.nextOpportunity()
+  const next = World.opportunity()
   myLife.participate(next)
 }`
+
+export async function generateMetadata(): Promise<Metadata> {
+  return {
+    title: 'Huan',
+    description: "A passionate front-end engineer Huan's bio page",
+    keywords: 'dukeluo, shaiwang, 晒网',
+    authors: [{ name: process.env.NEXT_PUBLIC_SITE_AUTHOR! }],
+    openGraph: {
+      title: process.env.NEXT_PUBLIC_SITE_NAME,
+      description: process.env.NEXT_PUBLIC_SITE_DESCRIPTION,
+      url: process.env.NEXT_PUBLIC_SITE_URL,
+      type: 'website',
+      images: './icon.svg',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: process.env.NEXT_PUBLIC_SITE_NAME,
+      description: process.env.NEXT_PUBLIC_SITE_DESCRIPTION,
+      creator: process.env.NEXT_PUBLIC_SITE_AUTHOR,
+      images: './icon.svg',
+    },
+    robots: 'index, follow',
+    metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL!),
+  }
+}
 
 export default function Home() {
   return (
