@@ -11,8 +11,8 @@ import hljs from 'highlight.js'
 import { Metadata } from 'next'
 
 import { ExternalLink } from './components/ExternalLink'
-import { PageTitle } from './components/PageTitle'
 import { Prose } from './components/Prose'
+import { SayHello } from './components/SayHello'
 import { SocialLink } from './components/SocialLink'
 
 const SocialMedia = [
@@ -73,7 +73,7 @@ export default function Home() {
   return (
     <div className="mt-9 md:flex md:gap-2">
       <div className="md:mt-20 md:w-5/12">
-        <PageTitle>Hello there.</PageTitle>
+        <SayHello />
         <div className="flex flex-col gap-4">
           <p className="mt-6 text-balance text-base">
             I’m <span className="font-bold">Huan</span>, a front-end engineer who loves building{' '}
