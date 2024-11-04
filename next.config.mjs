@@ -4,11 +4,11 @@ const config = {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: '**.amazonaws.com',
+        hostname: 'cdn.worldvectorlogo.com',
       },
       {
         protocol: 'https',
-        hostname: 'images.unsplash.com',
+        hostname: 'i.ibb.co',
       },
     ],
   },

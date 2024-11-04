@@ -1,49 +1,49 @@
 import * as motion from 'framer-motion/client'
 
 import { PageLayout } from '../components/PageLayout'
-import { ProjectCard } from '../components/ProjectCard'
+import { IProject, ProjectCard } from '../components/ProjectCard'
 import { ANIMATION_FROM_PROPS, ANIMATION_TO_PROPS } from '../lib/animation'
-import { MyCurrentProjects, MyPastProjects } from '../lib/lifeApi'
 
-const seoTitle = 'Creating'
-const seoDescription = "Things I've made trying to put my dent in the universe."
+const Projects: IProject[] = [
+  {
+    title: 'eslint-plugin-check-file',
+    description:
+      'ESLint rules for consistent filename and folder. Allows you to enforce a consistent naming pattern for the filename and folder. ',
+    techStack: ['Node.js', 'JavaScript', 'ESLint'],
+    logo: 'https://cdn.worldvectorlogo.com/logos/npm-2.svg',
+    link: {
+      label: 'npm',
+      href: 'https://www.npmjs.com/package/eslint-plugin-check-file',
+    },
+  },
+  {
+    title: 'wai',
+    description:
+      'A new tab page extension for cervical spondylosis prevention, supports Chrome, Firefox and web pages.',
+    techStack: ['TypeScript', 'Python', 'Vue'],
+    logo: 'https://i.ibb.co/pKTRv5k/logo128.png',
+    link: {
+      label: 'GitHub',
+      href: 'https://github.com/dukeluo/wai',
+    },
+  },
+]
 
 export default function Creating() {
   return (
-    <>
-      <PageLayout title="Things I've made trying to put my dent in the universe.">
-        <h2 className="text-2xl font-bold tracking-tight">Now</h2>
-        <p className="mt-2 text-base">Projects I currently work on.</p>
-        <ul role="list" className="mt-12 grid grid-cols-1 gap-x-12 gap-y-16 sm:grid-cols-2 lg:grid-cols-3">
-          {MyCurrentProjects.map((project) => (
-            <motion.li
-              key={project.title}
-              initial={ANIMATION_FROM_PROPS}
-              whileInView={ANIMATION_TO_PROPS}
-              viewport={{ once: true }}
-            >
-              <ProjectCard project={project} />
-            </motion.li>
-          ))}
-        </ul>
-
-        <h2 className="mt-24 text-2xl font-bold tracking-tight">Past</h2>
-        <p className="mt-2 text-base">
-          Projects I worked on. Due to nature of internet businesses not all of them are still online.
-        </p>
-        <ul role="list" className="mt-12 grid grid-cols-1 gap-x-12 gap-y-16 sm:grid-cols-2 lg:grid-cols-3">
-          {MyPastProjects.map((project) => (
-            <motion.li
-              key={project.title}
-              initial={ANIMATION_FROM_PROPS}
-              whileInView={ANIMATION_TO_PROPS}
-              viewport={{ once: true }}
-            >
-              <ProjectCard key={project.title} project={project} />
-            </motion.li>
-          ))}
-        </ul>
-      </PageLayout>
-    </>
+    <PageLayout title="Creations aimed at making my mark on the world.">
+      <ul role="list" className="mt-12 grid grid-cols-1 gap-x-12 gap-y-16 sm:grid-cols-2 lg:grid-cols-3">
+        {Projects.map((project) => (
+          <motion.li
+            key={project.title}
+            initial={ANIMATION_FROM_PROPS}
+            whileInView={ANIMATION_TO_PROPS}
+            viewport={{ once: true }}
+          >
+            <ProjectCard project={project} />
+          </motion.li>
+        ))}
+      </ul>
+    </PageLayout>
   )
 }
