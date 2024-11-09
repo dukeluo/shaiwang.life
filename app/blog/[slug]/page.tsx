@@ -19,7 +19,7 @@ export default async function Blog({ params }: { params: { slug: string } }) {
 
   return (
     <BlogLayout meta={{ title: blog.title, description: blog.description, date: blog.createdAt }}>
-      <div className="mb-4 border-b border-zinc-100 dark:border-zinc-700/40">
+      <div className="mb-4">
         {blogContent.map((block) => (
           <NotionBlockRenderer key={block.id} block={block} />
         ))}

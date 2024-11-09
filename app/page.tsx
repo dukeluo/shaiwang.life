@@ -71,8 +71,8 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default function Home() {
   return (
-    <div className="mt-9 md:flex md:gap-2">
-      <div className="md:mt-20 md:w-5/12">
+    <div className="md:flex md:gap-2">
+      <div className="mt-16 sm:mt-32 md:w-5/12">
         <SayHello />
         <div className="flex flex-col gap-4">
           <p className="mt-6 text-balance text-base">
@@ -104,7 +104,7 @@ export default function Home() {
           ))}
         </div>
       </div>
-      <Prose className="mt-10 md:mt-0 md:w-7/12">
+      <Prose className="mt-10 md:w-7/12">
         <pre>
           <code dangerouslySetInnerHTML={{ __html: hljs.highlight(PoeticCode, { language: 'javascript' }).value }} />
         </pre>
