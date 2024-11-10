@@ -36,6 +36,13 @@ const Tools = {
       href: 'https://www.raycast.com/',
     },
   ],
+  Articles: [
+    {
+      title: 'React Official Documentation',
+      description: `Lots of useful articles and tutorials. Every React developer should read it.`,
+      href: 'https://react.dev/learn',
+    },
+  ],
 }
 
 const ToolsSection = ({ title, children }: { title: string; children: React.ReactNode }) => {
