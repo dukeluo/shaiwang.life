@@ -1,4 +1,5 @@
 import { TextRichTextItemResponse } from '@notionhq/client/build/src/api-endpoints'
+import { RiExternalLinkLine } from '@remixicon/react'
 import clsx from 'clsx'
 import hljs from 'highlight.js'
 import Image from 'next/image'
@@ -138,6 +139,19 @@ export const NotionBlockRenderer = ({ block }: Props) => {
           {href}
         </a>
       )
+    case 'embed':
+      const url = value.url
+
+      if (url.includes('stackblitz')) {
+        return (
+          <a href={url} target="_brank" className="flex items-center gap-1 text-sm">
+            <span className="">Preview Demo on StackBlitz</span>
+            <RiExternalLinkLine className="size-4" />
+          </a>
+        )
+      }
+    case 'table_of_contents':
+      return null
     default:
       return (
         <div className="relative rounded border border-red-400 bg-red-100 px-4 py-3 text-red-700" role="alert">
