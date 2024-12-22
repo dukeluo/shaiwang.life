@@ -11,7 +11,7 @@ interface TitleProps {
 const Title = ({ as: TitleComponent = 'h1', action, children }: TitleProps) => {
   return (
     <header className="mt-16 flex flex-row items-center justify-between">
-      <TitleComponent className="text-xl font-bold leading-none tracking-tight">{children}</TitleComponent>
+      <TitleComponent className="text-xl font-bold leading-none">{children}</TitleComponent>
       {action}
     </header>
   )

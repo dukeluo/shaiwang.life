@@ -11,7 +11,7 @@ export default async function Blogs() {
 
   return (
     <PageLayout title="All thoughts I want to share with others.">
-      <h3 className="text-2xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100">Tags</h3>
+      <h3 className="text-2xl font-bold text-zinc-800 dark:text-zinc-100">Tags</h3>
       <div className="mt-4 flex max-w-xl flex-wrap gap-1 font-mono">
         {tags.map((tag) => (
           <Badge key={tag} href={`/tags/${tag}`}>

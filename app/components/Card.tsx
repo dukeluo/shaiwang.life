@@ -28,7 +28,7 @@ const CardTitle = ({
   children,
 }: React.PropsWithChildren<{ as?: React.ElementType; href?: string }>) => {
   return (
-    <Component className="text-balance text-base font-semibold tracking-tight text-zinc-800 dark:text-zinc-100">
+    <Component className="text-balance text-base font-semibold text-zinc-800 dark:text-zinc-100">
       {href ? <Card.Link href={href}>{children}</Card.Link> : children}
     </Component>
   )
