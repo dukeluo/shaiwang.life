@@ -3,6 +3,8 @@ import { BlogPostPreview } from '../components/blog/BlogPostPreview'
 import { PageLayout } from '../components/PageLayout'
 import { notionApi } from '../lib/notionApi'
 
+export const revalidate = 3600
+
 export default async function Blogs() {
   const blogs = await notionApi.getBlogs('desc')
   const tags = Array.from(new Set(blogs.map((blog) => blog.tags).flat()))

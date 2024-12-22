@@ -4,6 +4,8 @@ import { PageLayout } from '../components/PageLayout'
 import { Search } from '../components/Search'
 import { notionApi } from '../lib/notionApi'
 
+export const revalidate = 3600
+
 export default async function Notes() {
   const notes = await notionApi.getNotes('desc')
   const tags = Array.from(new Set(notes.map((note) => note.tags).flat()))
