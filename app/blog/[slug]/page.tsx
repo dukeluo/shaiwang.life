@@ -8,6 +8,31 @@ import { notionApi } from '../../lib/notionApi'
 
 export const revalidate = 3600
 
+export async function generateMetadata({ params }: { params: { slug: string } }) {
+  const blogs = await notionApi.getBlogs()
+  const blog = blogs.find((blog) => blog.slug === params.slug)
+
+  if (!blog) {
+    return null
+  }
+
+  const title = blog.title
+  const description = blog.description
+
+  return {
+    title,
+    description,
+    openGraph: {
+      title,
+      images: [`/api/og?title=${encodeURIComponent(title)}`],
+    },
+    twitter: {
+      title,
+      images: [`/api/og?title=${encodeURIComponent(title)}`],
+    },
+  }
+}
+
 export default async function Blog({ params }: { params: { slug: string } }) {
   const blogs = await notionApi.getBlogs()
   const blog = blogs.find((blog) => blog.slug === params.slug)
