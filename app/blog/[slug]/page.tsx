@@ -6,6 +6,8 @@ import { Route } from '../../components/Navigation'
 import { NotionBlockRenderer } from '../../components/notion/NotionBlockRenderer'
 import { notionApi } from '../../lib/notionApi'
 
+export const revalidate = 3600
+
 export default async function Blog({ params }: { params: { slug: string } }) {
   const blogs = await notionApi.getBlogs()
   const blog = blogs.find((blog) => blog.slug === params.slug)
