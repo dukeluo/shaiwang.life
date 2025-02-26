@@ -117,6 +117,8 @@ class NotionApi {
 
   private getDatabaseContent = async (databaseId: string): Promise<NotionPage[]> => {
     if (this.cache) {
+      // eslint-disable-next-line no-console
+      console.info('cache hit', new Date().toISOString())
       return this.cache
     }
 

@@ -4,7 +4,7 @@ import { PageLayout } from '../components/PageLayout'
 import { Search } from '../components/Search'
 import { notionApi } from '../lib/notionApi'
 
-export const revalidate = 3600
+export const revalidate = 3000
 
 export default async function Notes() {
   const notes = await notionApi.getNotes('desc')

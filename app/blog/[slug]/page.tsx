@@ -6,7 +6,7 @@ import { Route } from '../../components/Navigation'
 import { NotionBlockRenderer } from '../../components/notion/NotionBlockRenderer'
 import { notionApi } from '../../lib/notionApi'
 
-export const revalidate = 3600
+export const revalidate = 3000
 
 export async function generateMetadata({ params }: { params: { slug: string } }) {
   const blogs = await notionApi.getBlogs()

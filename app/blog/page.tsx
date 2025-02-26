@@ -3,7 +3,7 @@ import { BlogPostPreview } from '../components/blog/BlogPostPreview'
 import { PageLayout } from '../components/PageLayout'
 import { notionApi } from '../lib/notionApi'
 
-export const revalidate = 3600
+export const revalidate = 3000
 
 export default async function Blogs() {
   const blogs = await notionApi.getBlogs('desc')
