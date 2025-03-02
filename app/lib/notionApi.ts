@@ -67,7 +67,6 @@ const BlockTypeTransformLookup: Record<BlockType, (block: BlockObjectResponse) =
 class NotionApi {
   private readonly notion: Client
   private readonly databaseId: string
-  private cache: NotionPage[] | null = null
 
   constructor() {
     this.notion = new Client({ auth: process.env.NOTION_TOKEN })
@@ -116,12 +115,6 @@ class NotionApi {
   }
 
   private getDatabaseContent = async (databaseId: string): Promise<NotionPage[]> => {
-    if (this.cache) {
-      // eslint-disable-next-line no-console
-      console.info('cache hit', new Date().toISOString())
-      return this.cache
-    }
-
     const db = await this.notion.databases.query({ database_id: databaseId })
 
     while (db.has_more && db.next_cursor) {
@@ -134,7 +127,7 @@ class NotionApi {
       db.next_cursor = next_cursor
     }
 
-    this.cache = db.results
+    return db.results
       .filter((page) => isFullPage(page))
       .map((page) => ({
         id: page.id,
@@ -154,8 +147,6 @@ class NotionApi {
         cover: page.cover?.type === 'external' ? page.cover.external.url : null,
       }))
       .filter((page) => page.status === NotionPageStatus.Public)
-
-    return this.cache
   }
 
   private getPageContent = async (pageId: string) => {
