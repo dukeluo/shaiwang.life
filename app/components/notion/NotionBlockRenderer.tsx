@@ -2,9 +2,9 @@ import { TextRichTextItemResponse } from '@notionhq/client/build/src/api-endpoin
 import { RiExternalLinkLine } from '@remixicon/react'
 import clsx from 'clsx'
 import hljs from 'highlight.js'
-import Image from 'next/image'
 import Link from 'next/link'
 
+import { NotionImage } from './NotionImage'
 import { Quote } from './Quote'
 
 //TODO: improve types here, cleanup the code
@@ -88,18 +88,14 @@ export const NotionBlockRenderer = ({ block }: Props) => {
       const src = value.type === 'external' ? value.external.url : value.file.url
       const caption = value.caption ? value.caption[0]?.plain_text : ''
       return (
-        <figure>
-          <Image
-            className="object-cover"
-            placeholder="blur"
-            src={src}
-            alt={caption}
-            blurDataURL={value.placeholder}
-            width={value.size.width}
-            height={value.size.height}
-          />
-          {caption && <figcaption>{caption}</figcaption>}
-        </figure>
+        <NotionImage
+          src={src}
+          alt={caption}
+          blurDataURL={value.placeholder}
+          width={value.size?.width ?? 800}
+          height={value.size?.height ?? 600}
+          caption={caption}
+        />
       )
     case 'divider':
       return <hr key={id} />

@@ -4,7 +4,8 @@ import { BlogLayout } from '../../components/blog/BlogLayout'
 import { NotionBlockRenderer } from '../../components/notion/NotionBlockRenderer'
 import { notionApi } from '../../lib/notionApi'
 
-export const revalidate = 3000
+export const revalidate = 900
+export const dynamic = 'force-dynamic'
 
 export default async function Note({ params }: { params: { slug: string } }) {
   const notes = await notionApi.getNotes()

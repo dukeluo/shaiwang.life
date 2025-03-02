@@ -1,7 +1,6 @@
 import { Client, isFullPage } from '@notionhq/client'
 import { BlockObjectResponse } from '@notionhq/client/build/src/api-endpoints'
 import { compareAsc, compareDesc } from 'date-fns'
-import { getPlaiceholder } from 'plaiceholder'
 
 import { NotionPage, NotionPageStatus, NotionPageType } from './types'
 
@@ -45,18 +44,7 @@ const BlockTypeTransformLookup: Record<BlockType, (block: BlockObjectResponse) =
   table_row: noop,
   embed: noop,
   bookmark: noop,
-  image: async (block: any) => {
-    const contents = block[block.type]
-    const buffer = await fetch(contents[contents.type].url).then(async (res) => Buffer.from(await res.arrayBuffer()))
-    const {
-      base64,
-      metadata: { height, width },
-    } = await getPlaiceholder(buffer, { size: 64 })
-    block.image['size'] = { height, width }
-    block.image['placeholder'] = base64
-
-    return block
-  },
+  image: noop,
   video: noop,
   pdf: noop,
   audio: noop,
