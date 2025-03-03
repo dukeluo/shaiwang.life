@@ -6,7 +6,7 @@ import { Route } from '../../components/Navigation'
 import { NotionBlockRenderer } from '../../components/notion/NotionBlockRenderer'
 import { notionApi } from '../../lib/notionApi'
 
-export const revalidate = 900
+export const revalidate = 3000
 export const dynamic = 'force-dynamic'
 
 export async function generateMetadata({ params }: { params: { slug: string } }) {
