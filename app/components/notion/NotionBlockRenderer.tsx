@@ -4,6 +4,7 @@ import clsx from 'clsx'
 import hljs from 'highlight.js'
 import Link from 'next/link'
 
+import { MermaidDiagram } from './MermaidDiagram'
 import { NotionImage } from './NotionImage'
 import { Quote } from './Quote'
 
@@ -102,6 +103,9 @@ export const NotionBlockRenderer = ({ block }: Props) => {
     case 'quote':
       return <Quote key={id} quote={value.rich_text[0].plain_text} />
     case 'code':
+      if (value.language === 'mermaid') {
+        return <MermaidDiagram id={id} code={value.rich_text[0].plain_text} />
+      }
       return (
         <pre>
           <code
@@ -145,6 +149,20 @@ export const NotionBlockRenderer = ({ block }: Props) => {
           {href}
         </a>
       )
+    case 'table':
+      return (
+        <table>
+          <tbody>{value.children?.map((b: any) => <NotionBlockRenderer key={b.id} block={b} />)}</tbody>
+        </table>
+      )
+    case 'table_row':
+      return (
+        <tr>
+          {value.cells.map((cell: any[], i: number) => (
+            <td key={`${id}-${i}`}>{cell.length > 0 ? <NotionText textItems={cell} /> : null}</td>
+          ))}
+        </tr>
+      )
     case 'embed':
       const url = value.url
 
@@ -162,7 +180,7 @@ export const NotionBlockRenderer = ({ block }: Props) => {
       return (
         <div className="relative rounded border border-red-400 bg-red-100 px-4 py-3 text-red-700" role="alert">
           <span className="block sm:inline">
-            Unsupported block: ${type === 'unsupported' ? 'unsupported by Notion API' : type}
+            Unsupported block: {type === 'unsupported' ? 'unsupported by Notion API' : type}
           </span>
         </div>
       )
