@@ -107,9 +107,17 @@ export const NotionBlockRenderer = ({ block }: Props) => {
           <code
             key={id}
             dangerouslySetInnerHTML={{
-              __html: hljs.highlight(value.rich_text[0].plain_text, {
-                language: value.language === 'plain text' ? 'text' : value.language,
-              }).value,
+              __html: (() => {
+                try {
+                  return hljs.highlight(value.rich_text[0].plain_text, {
+                    language: value.language === 'plain text' ? 'text' : value.language,
+                  }).value
+                } catch (error) {
+                  return hljs.highlight(value.rich_text[0].plain_text, {
+                    language: 'text',
+                  }).value
+                }
+              })(),
             }}
           />
         </pre>
