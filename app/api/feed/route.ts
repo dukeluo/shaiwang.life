@@ -26,6 +26,15 @@ export async function GET() {
     })
   })
 
+  // Add verification message as a new RSS item
+  feed.item({
+    title: 'Feed Ownership Verification',
+    description:
+      'This message is used to verify that this feed (feedId:149832439969172480) belongs to me (userId:149828291520870400). Join me in enjoying the next generation information browser https://follow.is.',
+    url: process.env.NEXT_PUBLIC_SITE_URL || '',
+    date: new Date('2025-06-20'),
+  })
+
   return new NextResponse(feed.xml({ indent: true }), {
     headers: {
       'Content-Type': 'application/xml',
